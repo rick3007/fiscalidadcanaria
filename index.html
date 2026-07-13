@@ -633,7 +633,7 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
 <footer>
   <div class="f-logo">FISCALIDAD<span>CANARIA</span></div>
   <p class="f-copy" data-i18n="footer.copy">© 2026 Fiscalidad Canaria · Todos los derechos reservados</p>
-  <div class="f-links"><a href="#" data-i18n="footer.privacy">Privacidad</a><a href="#" data-i18n="footer.legal">Aviso Legal</a><a href="#" data-i18n="footer.cookies">Cookies</a></div>
+  <div class="f-links"><a href="#" onclick="openLegal('modalPrivacidad');return false" data-i18n="footer.privacy">Privacidad</a><a href="#" onclick="openLegal('modalAvisoLegal');return false" data-i18n="footer.legal">Aviso Legal</a><a href="#" onclick="openLegal('modalCookies');return false" data-i18n="footer.cookies">Cookies</a></div>
 </footer>
 
 <script>
@@ -896,6 +896,179 @@ document.getElementById('contactForm').addEventListener('submit',e=>{
   btn.textContent='✓ '+(currentLang==='es'?'Consulta enviada — Contactaremos en 24h':currentLang==='en'?'Sent — We\'ll be in touch within 24h':'Gesendet — Wir melden uns innerhalb von 24h');
   btn.style.background='#1a5c2e';
 });
+/* ── LEGAL MODALS ── */
+function openLegal(id){
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLegal(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow='';
+}
+document.querySelectorAll('.legal-overlay').forEach(el=>{
+  el.addEventListener('click',e=>{if(e.target===el)closeLegal(el.id)});
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') document.querySelectorAll('.legal-overlay.open').forEach(el=>closeLegal(el.id));
+});
+
+/* ── COOKIE BANNER ── */
+if(!localStorage.getItem('fc_cookies')){
+  document.getElementById('cookieBanner').style.display='flex';
+}
+function acceptCookies(){
+  localStorage.setItem('fc_cookies','accepted');
+  document.getElementById('cookieBanner').style.display='none';
+}
+function rejectCookies(){
+  localStorage.setItem('fc_cookies','rejected');
+  document.getElementById('cookieBanner').style.display='none';
+}
 </script>
+
+<!-- ── COOKIE BANNER ── -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9000;background:rgba(6,8,15,0.97);border-top:1px solid rgba(201,168,76,0.2);padding:20px 40px;display:none;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;backdrop-filter:blur(16px)">
+  <p style="font-size:13px;color:#7a8ba8;line-height:1.6;max-width:700px;margin:0">
+    Utilizamos cookies técnicas necesarias para el funcionamiento del sitio web. Puedes consultar nuestra
+    <a href="#" onclick="openLegal('modalCookies');return false" style="color:var(--gold);text-decoration:underline">Política de Cookies</a> y
+    <a href="#" onclick="openLegal('modalPrivacidad');return false" style="color:var(--gold);text-decoration:underline">Política de Privacidad</a>.
+  </p>
+  <div style="display:flex;gap:12px;flex-shrink:0">
+    <button onclick="rejectCookies()" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;background:transparent;color:#7a8ba8;border:1px solid rgba(255,255,255,0.1);cursor:pointer;font-family:'Inter',sans-serif;transition:all .3s">Solo necesarias</button>
+    <button onclick="acceptCookies()" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:10px 24px;background:var(--gold);color:#04060d;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600">Aceptar</button>
+  </div>
+</div>
+
+<!-- ── MODAL ESTILOS ── -->
+<style>
+.legal-overlay{position:fixed;inset:0;z-index:8000;background:rgba(4,6,13,.92);backdrop-filter:blur(12px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;overflow-y:auto;padding:60px 20px}
+.legal-overlay.open{opacity:1;visibility:visible}
+.legal-box{max-width:800px;margin:0 auto;background:#0b1120;border:1px solid rgba(201,168,76,.15);padding:56px;position:relative}
+.legal-close{position:absolute;top:24px;right:28px;font-size:24px;color:#6a7d9a;background:none;border:none;cursor:pointer;line-height:1;transition:color .3s}
+.legal-close:hover{color:var(--gold)}
+.legal-box h1{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--gold);margin-bottom:8px}
+.legal-box .legal-meta{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#6a7d9a;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid rgba(201,168,76,.1)}
+.legal-box h2{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#f0ede8;margin:32px 0 12px}
+.legal-box p,.legal-box li{font-size:14px;color:#7a8ba8;line-height:1.85;margin-bottom:10px}
+.legal-box ul{padding-left:20px;margin-bottom:10px}
+.legal-box strong{color:#c0b090}
+.legal-box a{color:var(--gold)}
+@media(max-width:768px){.legal-box{padding:32px 24px}.legal-overlay{padding:40px 12px}}
+</style>
+
+<!-- ── MODAL AVISO LEGAL ── -->
+<div class="legal-overlay" id="modalAvisoLegal">
+  <div class="legal-box">
+    <button class="legal-close" onclick="closeLegal('modalAvisoLegal')">✕</button>
+    <h1>Aviso Legal</h1>
+    <p class="legal-meta">Última actualización: julio 2026 · LSSI-CE Ley 34/2002</p>
+
+    <h2>1. Datos identificativos</h2>
+    <p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI-CE), se informa:</p>
+    <ul>
+      <li><strong>Denominación social:</strong> ALFISCO CANARIA, S.L.</li>
+      <li><strong>CIF:</strong> B-35749332</li>
+      <li><strong>Domicilio social:</strong> Calle Triana, 104, 3.º B, 35002 Las Palmas de Gran Canaria</li>
+      <li><strong>Teléfono:</strong> +34 928 381 131</li>
+      <li><strong>Email:</strong> fiscal@alfiscocanaria.com</li>
+      <li><strong>Actividad:</strong> Asesoramiento jurídico, económico y fiscal</li>
+    </ul>
+
+    <h2>2. Objeto y ámbito de aplicación</h2>
+    <p>El presente Aviso Legal regula el acceso y uso del sitio web <strong>fiscalidadcanaria.com</strong> (en adelante, "el Sitio Web"), titularidad de ALFISCO CANARIA, S.L. El acceso al Sitio Web implica la aceptación plena y sin reservas de las presentes condiciones.</p>
+
+    <h2>3. Propiedad intelectual e industrial</h2>
+    <p>Todos los contenidos del Sitio Web —textos, imágenes, logotipos, diseño gráfico y código fuente— son titularidad de ALFISCO CANARIA, S.L. o de sus legítimos titulares, y están protegidos por la legislación española e internacional sobre propiedad intelectual e industrial. Queda expresamente prohibida su reproducción, distribución, transformación o comunicación pública sin autorización expresa.</p>
+
+    <h2>4. Responsabilidad</h2>
+    <p>ALFISCO CANARIA, S.L. no se responsabiliza de los daños derivados de la utilización del Sitio Web, ni de posibles discrepancias que pudieran surgir entre la versión impresa y la versión electrónica de los documentos publicados. Los contenidos tienen carácter meramente informativo y no constituyen asesoramiento jurídico o fiscal.</p>
+
+    <h2>5. Legislación aplicable y jurisdicción</h2>
+    <p>Las presentes condiciones se rigen por la legislación española. Para cualquier controversia derivada del acceso o uso del Sitio Web, las partes se someten a los Juzgados y Tribunales de Las Palmas de Gran Canaria, con renuncia expresa a cualquier otro fuero que pudiera corresponderles.</p>
+  </div>
+</div>
+
+<!-- ── MODAL PRIVACIDAD ── -->
+<div class="legal-overlay" id="modalPrivacidad">
+  <div class="legal-box">
+    <button class="legal-close" onclick="closeLegal('modalPrivacidad')">✕</button>
+    <h1>Política de Privacidad</h1>
+    <p class="legal-meta">Última actualización: julio 2026 · RGPD (UE) 2016/679 · LOPDGDD 3/2018</p>
+
+    <h2>1. Responsable del tratamiento</h2>
+    <ul>
+      <li><strong>Identidad:</strong> ALFISCO CANARIA, S.L.</li>
+      <li><strong>CIF:</strong> B-35749332</li>
+      <li><strong>Domicilio:</strong> Calle Triana, 104, 3.º B, 35002 Las Palmas de Gran Canaria</li>
+      <li><strong>Email:</strong> fiscal@alfiscocanaria.com</li>
+    </ul>
+
+    <h2>2. Datos que recabamos</h2>
+    <p>A través del formulario de contacto recabamos: nombre, empresa, correo electrónico, teléfono y el mensaje que voluntariamente nos envíe. No recabamos datos especialmente protegidos.</p>
+
+    <h2>3. Finalidad y base jurídica</h2>
+    <ul>
+      <li><strong>Gestión de consultas:</strong> atender y responder las solicitudes recibidas. Base jurídica: consentimiento del interesado (art. 6.1.a RGPD).</li>
+      <li><strong>Relación contractual:</strong> en caso de contratación de servicios. Base jurídica: ejecución de contrato (art. 6.1.b RGPD).</li>
+      <li><strong>Obligaciones legales:</strong> cumplimiento de obligaciones fiscales y mercantiles. Base jurídica: obligación legal (art. 6.1.c RGPD).</li>
+    </ul>
+
+    <h2>4. Conservación de los datos</h2>
+    <p>Los datos se conservarán durante el tiempo necesario para atender su consulta y, en caso de relación contractual, durante los plazos establecidos por la normativa aplicable (fiscal: 5 años; mercantil: 6 años).</p>
+
+    <h2>5. Destinatarios</h2>
+    <p>No se cederán datos a terceros salvo obligación legal. No se realizan transferencias internacionales de datos.</p>
+
+    <h2>6. Sus derechos</h2>
+    <p>En virtud del RGPD, puede ejercer los siguientes derechos dirigiéndose a <strong>fiscal@alfiscocanaria.com</strong>:</p>
+    <ul>
+      <li><strong>Acceso:</strong> conocer qué datos tratamos sobre usted.</li>
+      <li><strong>Rectificación:</strong> corregir datos inexactos.</li>
+      <li><strong>Supresión:</strong> solicitar la eliminación de sus datos.</li>
+      <li><strong>Limitación:</strong> restringir el tratamiento en determinadas circunstancias.</li>
+      <li><strong>Portabilidad:</strong> recibir sus datos en formato estructurado.</li>
+      <li><strong>Oposición:</strong> oponerse al tratamiento por motivos legítimos.</li>
+    </ul>
+    <p>Tiene derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos</strong> (AEPD) en <a href="https://www.aepd.es" target="_blank">www.aepd.es</a>.</p>
+
+    <h2>7. Seguridad</h2>
+    <p>ALFISCO CANARIA, S.L. ha adoptado las medidas técnicas y organizativas necesarias para garantizar la seguridad de los datos de carácter personal y evitar su alteración, pérdida o tratamiento no autorizado, según lo establecido en el RGPD y la LOPDGDD.</p>
+  </div>
+</div>
+
+<!-- ── MODAL COOKIES ── -->
+<div class="legal-overlay" id="modalCookies">
+  <div class="legal-box">
+    <button class="legal-close" onclick="closeLegal('modalCookies')">✕</button>
+    <h1>Política de Cookies</h1>
+    <p class="legal-meta">Última actualización: julio 2026 · LSSI-CE · RGPD (UE) 2016/679</p>
+
+    <h2>1. ¿Qué son las cookies?</h2>
+    <p>Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita un sitio web. Permiten que el sitio recuerde sus preferencias y mejore su experiencia de navegación.</p>
+
+    <h2>2. Cookies que utilizamos</h2>
+    <p>Este sitio web utiliza <strong>únicamente cookies técnicas o estrictamente necesarias</strong>, que no requieren consentimiento previo conforme al art. 22.2 de la LSSI-CE:</p>
+    <ul>
+      <li><strong>fc_cookies:</strong> almacena su preferencia sobre el aviso de cookies. Duración: 1 año. Titular: ALFISCO CANARIA, S.L.</li>
+    </ul>
+    <p>No utilizamos cookies de análisis, publicidad ni redes sociales.</p>
+
+    <h2>3. Cómo gestionar las cookies</h2>
+    <p>Puede configurar su navegador para bloquear o eliminar cookies. Tenga en cuenta que deshabilitar las cookies técnicas puede afectar al funcionamiento del sitio:</p>
+    <ul>
+      <li><strong>Chrome:</strong> Configuración → Privacidad y seguridad → Cookies</li>
+      <li><strong>Firefox:</strong> Opciones → Privacidad y seguridad → Cookies</li>
+      <li><strong>Safari:</strong> Preferencias → Privacidad → Cookies</li>
+      <li><strong>Edge:</strong> Configuración → Privacidad → Cookies</li>
+    </ul>
+
+    <h2>4. Actualizaciones</h2>
+    <p>ALFISCO CANARIA, S.L. puede modificar esta Política de Cookies en función de cambios legislativos o del propio sitio web. Se recomienda revisarla periódicamente.</p>
+
+    <h2>5. Más información</h2>
+    <p>Para cualquier consulta sobre el uso de cookies puede contactar en <strong>fiscal@alfiscocanaria.com</strong>.</p>
+  </div>
+</div>
+
 </body>
 </html>
