@@ -251,8 +251,9 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
   transition:border-color .3s;
 }
 .team-card:hover .team-photo{border-color:rgba(201,168,76,.5)}
-.team-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(20%);transition:filter .4s,transform .4s}
-.team-card:hover .team-photo img{filter:grayscale(0%);transform:scale(1.05)}
+.team-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(20%);transition:filter .4s}
+@keyframes greet{0%{transform:scale(1.05) rotate(0deg)}25%{transform:scale(1.05) rotate(-5deg)}55%{transform:scale(1.05) rotate(4deg)}75%{transform:scale(1.05) rotate(-2deg)}100%{transform:scale(1.05) rotate(0deg)}}
+.team-card:hover .team-photo img{filter:grayscale(0%);animation:greet .75s ease forwards}
 .team-photo-placeholder{
   width:100%;height:100%;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(135deg,#0d1829,#1a2540);
@@ -388,6 +389,8 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
     <button onclick="setLang('es');updateMobileLangs()" id="ml-es">ES</button>
     <button onclick="setLang('en');updateMobileLangs()" id="ml-en">EN</button>
     <button onclick="setLang('de');updateMobileLangs()" id="ml-de">DE</button>
+    <button onclick="setLang('it');updateMobileLangs()" id="ml-it">IT</button>
+    <button onclick="setLang('fr');updateMobileLangs()" id="ml-fr">FR</button>
   </div>
 </div>
 
@@ -408,6 +411,8 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
       <button class="lang-btn active" onclick="setLang('es')">ES</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" onclick="setLang('it')">IT</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
     </div>
     <div class="hamburger" id="hamburger" onclick="toggleMobile()">
       <span></span><span></span><span></span>
@@ -680,7 +685,7 @@ const T = {
     'hero.l1':'Smart taxation','hero.l2':'for global','hero.l3':'entrepreneurs',
     'hero.sub':'The Canary Islands offer one of Europe\'s most advantageous tax regimes. We help you set up, reduce taxes and grow — wherever you\'re from.',
     'hero.cta1':'Get started →','hero.cta2':'Is this for me?',
-    'trust.1':'Service in Spanish, English & German','trust.2':'Free first consultation','trust.3':'+20 years of experience',
+    'trust.1':'Service in Spanish, English, German, Italian & French','trust.2':'Free first consultation','trust.3':'+20 years of experience',
     'scroll':'Discover',
     'stat.1':'Years of experience','stat.2':'Satisfied clients','stat.3':'Million euros optimised','stat.4':'Satisfaction rate',
     'fw.label':'Who it\'s for','fw.title':'Built for those who <strong>think big</strong>',
@@ -723,7 +728,7 @@ const T = {
     'hero.l1':'Intelligente Steuerplanung','hero.l2':'für globale','hero.l3':'Unternehmer',
     'hero.sub':'Die Kanarischen Inseln bieten eines der attraktivsten Steuersysteme Europas. Wir helfen Ihnen, sich anzusiedeln, Steuern zu optimieren und zu wachsen — egal woher Sie kommen.',
     'hero.cta1':'Jetzt starten →','hero.cta2':'Ist das für mich?',
-    'trust.1':'Beratung auf Spanisch, Englisch & Deutsch','trust.2':'Erstes Gespräch kostenlos','trust.3':'+20 Jahre Erfahrung',
+    'trust.1':'Beratung auf Spanisch, Englisch, Deutsch, Italienisch & Französisch','trust.2':'Erstes Gespräch kostenlos','trust.3':'+20 Jahre Erfahrung',
     'scroll':'Entdecken',
     'stat.1':'Jahre Erfahrung','stat.2':'Zufriedene Kunden','stat.3':'Millionen Euro optimiert','stat.4':'Zufriedenheitsrate',
     'fw.label':'Für wen','fw.title':'Konzipiert für Menschen, die <strong>groß denken</strong>',
@@ -759,6 +764,92 @@ const T = {
     'team.m3.name':'— Name —','team.m3.role':'— Position —','team.m3.bio':'Beschreibung des Teammitglieds.',
     'team.m4.name':'— Name —','team.m4.role':'— Position —','team.m4.bio':'Beschreibung des Teammitglieds.',
     'ticker':['ZEC Sonderwirtschaftszone','RIC Investitionsrücklage','IGIC Indirekte Steuer','Steuerplanung','Rechtsberatung','Körperschaftsteuer','Handelsrecht','Einkommensteuer & Vermögen']
+  },
+  it: {
+    'nav.forwho':'Per chi','nav.services':'Servizi','nav.ref':'Regime Fiscale Canario','nav.contact':'Contatti','nav.cta':'Consulenza Gratuita',
+    'hero.badge':'Sistema Fiscale Esclusivo · Isole Canarie · UE',
+    'hero.l1':'Fiscalità intelligente','hero.l2':'per imprenditori','hero.l3':'globali',
+    'hero.sub':'Le Isole Canarie offrono uno dei regimi fiscali più vantaggiosi d\'Europa. Vi aiutiamo a stabilirvi, ottimizzare le imposte e crescere — ovunque voi siate.',
+    'hero.cta1':'Inizia qui →','hero.cta2':'È adatto a me?',
+    'trust.1':'Consulenza in Spagnolo, Inglese, Tedesco, Italiano & Francese','trust.2':'Prima consulenza gratuita','trust.3':'+20 anni di esperienza',
+    'scroll':'Scopri',
+    'stat.1':'Anni di esperienza','stat.2':'Clienti soddisfatti','stat.3':'Milioni di euro ottimizzati','stat.4':'Tasso di soddisfazione',
+    'fw.label':'Per chi','fw.title':'Progettato per chi pensa <strong>in grande</strong>',
+    'fw.c1.title':'Imprenditori digitali','fw.c1.desc':'Freelance, nomadi digitali e fondatori di startup che cercano una base legale e fiscale solida in Europa con bassa tassazione.','fw.c1.tag':'ZEC · 4% Imp. Soc.',
+    'fw.c2.title':'Investitori internazionali','fw.c2.desc':'Aziende e privati stranieri che vogliono stabilirsi in territorio europeo e sfruttare il regime fiscale speciale delle Isole Canarie.','fw.c2.tag':'REF · RIC · DIC',
+    'fw.c3.title':'Imprese locali in crescita','fw.c3.desc':'PMI canarie che cercano di ottimizzare il carico fiscale, strutturare correttamente l\'azienda e crescere con sicurezza giuridica.','fw.c3.tag':'IGIC · Imp. Soc. · RIC',
+    'sv.label':'Servizi','sv.title':'Soluzioni fiscali<br><strong>su misura</strong>','sv.desc':'Consulenza legale, economica e fiscale integrale, con particolare expertise nel Regime Economico e Fiscale delle Canarie.','sv.more':'Scopri di più →',
+    'sv.c1.title':'Consulenza Fiscale Aziendale','sv.c1.desc':'Pianificazione fiscale integrata per aziende. Ottimizzazione dell\'imposta sulle società e conformità normativa nel contesto canario.',
+    'sv.c2.title':'IGIC & Fiscalità Indiretta','sv.c2.desc':'Gestione specializzata dell\'imposta indiretta canaria. Dichiarazioni, deduzioni e pianificazione fiscale.',
+    'sv.c3.title':'ZEC — Zona Speciale Canaria','sv.c3.desc':'Iscrizione e gestione nella Zona Economica Speciale delle Canarie. Aliquota ridotta al 4% per le società registrate.',
+    'sv.c4.title':'RIC — Riserva per Investimenti','sv.c4.desc':'Gestione della riserva canaria per investimenti. Riduzione della base imponibile fino al 90%.',
+    'sv.c5.title':'Consulenza Legale Commerciale','sv.c5.desc':'Costituzione di società, contratti commerciali, operazioni societarie e consulenza legale continuativa.',
+    'sv.c6.title':'IRPF & Patrimonio','sv.c6.desc':'Dichiarazioni dei redditi e patrimoniali. Pianificazione fiscale personale e ottimizzazione degli investimenti.',
+    'sv.c7.title':'Legge sulla Seconda Opportunità','sv.c7.desc':'Specialisti nella procedura di esdebitazione per privati e lavoratori autonomi. Vi accompagniamo in ogni fase verso un nuovo inizio economico.',
+    'ref.tag':'Specializzazione Esclusiva','ref.title':'Il Regime Fiscale <strong>Canario</strong>, il nostro vantaggio','ref.body':'Le Isole Canarie godono di un regime fiscale unico in Europa. Il corretto utilizzo di questi vantaggi può rappresentare un notevole risparmio fiscale per la vostra azienda.',
+    'ref.f1.title':'Zona Speciale Canaria (ZEC)','ref.f1.desc':'Aliquota dell\'imposta sulle società al 4%. Uno dei regimi più vantaggiosi dell\'UE.',
+    'ref.f2.title':'Riserva per Investimenti (RIC)','ref.f2.desc':'Riduzione fino al 90% degli utili non distribuiti destinati a investimenti nelle Isole Canarie.',
+    'ref.f3.title':'Deduzione per Investimenti (DIC)','ref.f3.desc':'Deduzioni aggiuntive fino al 25% sugli investimenti in nuovi beni strumentali.',
+    'ref.f4.title':'IGIC vs IVA','ref.f4.desc':'Aliquota generale del 7% rispetto al 21% della penisola. Gestione specializzata di tutte le sue particolarità.',
+    'pr.label':'Come lavoriamo','pr.title':'Un processo chiaro<br><strong>senza sorprese</strong>',
+    'pr.s1.title':'Consulenza Iniziale','pr.s1.desc':'Primo incontro gratuito per analizzare la vostra situazione fiscale. Senza impegno. Nella vostra lingua.',
+    'pr.s2.title':'Diagnosi','pr.s2.desc':'Analisi dettagliata della vostra struttura e identificazione di tutte le opportunità di ottimizzazione fiscale.',
+    'pr.s3.title':'Strategia','pr.s3.desc':'Piano fiscale personalizzato che massimizza i benefici del REF canario per il vostro caso specifico.',
+    'pr.s4.title':'Supporto Continuativo','pr.s4.desc':'Gestione continua e consulenza permanente per tutto l\'anno fiscale.',
+    'ct.label':'Contatti','ct.title':'Parliamo della<br><strong>vostra fiscalità</strong>','ct.sub':'Prima consulenza gratuita e senza impegno.',
+    'ct.email':'Email','ct.phone':'Telefono','ct.addr':'Indirizzo',
+    'ct.f.name':'Nome','ct.f.name_ph':'Il vostro nome','ct.f.company':'Azienda','ct.f.company_ph':'Nome azienda','ct.f.email':'Email','ct.f.phone':'Telefono','ct.f.service':'Servizio','ct.f.service_ph':'Seleziona un servizio','ct.f.msg':'Messaggio','ct.f.msg_ph':'Descriveteci brevemente la vostra situazione...','ct.f.submit':'Invia richiesta →',
+    'footer.copy':'© 2026 Fiscalidad Canaria · Tutti i diritti riservati','footer.privacy':'Privacy','footer.legal':'Note Legali','footer.cookies':'Cookie',
+    'nav.team':'Team',
+    'team.label':'Il team','team.title':'Professionisti con <strong>vera esperienza</strong>','team.sub':'Oltre tre decenni di consulenza a imprese e privati nel Regime Fiscale delle Canarie.',
+    'team.m1.name':'Raúl Labao','team.m1.role':'Direttore · Avvocato & Economista','team.m1.bio':'Specialista nel Regime Economico e Fiscale delle Canarie. Oltre 20 anni di ottimizzazione fiscale per imprese locali e internazionali.',
+    'team.m2.name':'— Nome —','team.m2.role':'— Ruolo —','team.m2.bio':'Descrizione del membro del team.',
+    'team.m3.name':'— Nome —','team.m3.role':'— Ruolo —','team.m3.bio':'Descrizione del membro del team.',
+    'team.m4.name':'— Nome —','team.m4.role':'— Ruolo —','team.m4.bio':'Descrizione del membro del team.',
+    'ticker':['ZEC Zona Speciale Canaria','RIC Riserva Investimenti','IGIC Fiscalità Indiretta','Pianificazione Fiscale','Consulenza Legale','Imposta sulle Società','Diritto Commerciale','IRPF & Patrimonio']
+  },
+  fr: {
+    'nav.forwho':'Pour qui','nav.services':'Services','nav.ref':'Régime Fiscal Canarien','nav.contact':'Contact','nav.cta':'Consultation Gratuite',
+    'hero.badge':'Système Fiscal Exclusif · Îles Canaries · UE',
+    'hero.l1':'Fiscalité intelligente','hero.l2':'pour entrepreneurs','hero.l3':'globaux',
+    'hero.sub':'Les Îles Canaries offrent l\'un des régimes fiscaux les plus avantageux d\'Europe. Nous vous aidons à vous installer, optimiser vos impôts et croître — où que vous soyez.',
+    'hero.cta1':'Commencer ici →','hero.cta2':'Est-ce pour moi ?',
+    'trust.1':'Conseil en espagnol, anglais, allemand, italien & français','trust.2':'Première consultation gratuite','trust.3':'+20 ans d\'expérience',
+    'scroll':'Découvrir',
+    'stat.1':'Années d\'expérience','stat.2':'Clients satisfaits','stat.3':'Millions d\'euros optimisés','stat.4':'Taux de satisfaction',
+    'fw.label':'Pour qui','fw.title':'Conçu pour ceux qui pensent <strong>grand</strong>',
+    'fw.c1.title':'Entrepreneurs numériques','fw.c1.desc':'Freelances, nomades numériques et fondateurs de startups cherchant une base légale et fiscale solide en Europe avec une faible imposition.','fw.c1.tag':'ZEC · 4% IS',
+    'fw.c2.title':'Investisseurs internationaux','fw.c2.desc':'Entreprises et particuliers étrangers souhaitant s\'établir en Europe et profiter du régime fiscal spécial des Îles Canaries.','fw.c2.tag':'REF · RIC · DIC',
+    'fw.c3.title':'PME locales en croissance','fw.c3.desc':'PME canariennes cherchant à optimiser leur charge fiscale, structurer correctement leur entreprise et se développer en toute sécurité juridique.','fw.c3.tag':'IGIC · IS · RIC',
+    'sv.label':'Services','sv.title':'Solutions fiscales<br><strong>sur mesure</strong>','sv.desc':'Conseil juridique, économique et fiscal intégral, avec une expertise particulière dans le Régime Économique et Fiscal des Canaries.','sv.more':'En savoir plus →',
+    'sv.c1.title':'Conseil Fiscal d\'Entreprise','sv.c1.desc':'Planification fiscale intégrée pour les entreprises. Optimisation de l\'impôt sur les sociétés et conformité réglementaire dans le contexte canarien.',
+    'sv.c2.title':'IGIC & Fiscalité Indirecte','sv.c2.desc':'Gestion spécialisée de la taxe indirecte canarienne. Déclarations, déductions et planification fiscale.',
+    'sv.c3.title':'ZEC — Zone Spéciale Canarienne','sv.c3.desc':'Inscription et gestion dans la Zone Économique Spéciale des Canaries. Taux réduit à 4% pour les sociétés enregistrées.',
+    'sv.c4.title':'RIC — Réserve pour Investissements','sv.c4.desc':'Gestion de la réserve canarienne pour investissements. Réduction de la base imposable jusqu\'à 90%.',
+    'sv.c5.title':'Conseil Juridique Commercial','sv.c5.desc':'Constitution de sociétés, contrats commerciaux, opérations d\'entreprise et conseil juridique continu.',
+    'sv.c6.title':'IRPF & Patrimoine','sv.c6.desc':'Déclarations de revenus et de patrimoine. Planification fiscale personnelle et optimisation des investissements.',
+    'sv.c7.title':'Loi sur la Seconde Chance','sv.c7.desc':'Spécialistes de la procédure de désendettement pour particuliers et travailleurs indépendants. Nous vous accompagnons à chaque étape vers un nouveau départ économique.',
+    'ref.tag':'Spécialisation Exclusive','ref.title':'Le Régime Fiscal <strong>Canarien</strong>, notre avantage','ref.body':'Les Îles Canaries bénéficient d\'un régime fiscal unique en Europe. L\'utilisation correcte de ces avantages peut représenter d\'importantes économies fiscales pour votre entreprise.',
+    'ref.f1.title':'Zone Spéciale Canarienne (ZEC)','ref.f1.desc':'Taux d\'imposition sur les sociétés de 4%. L\'un des régimes les plus avantageux de l\'UE.',
+    'ref.f2.title':'Réserve pour Investissements (RIC)','ref.f2.desc':'Réduction jusqu\'à 90% des bénéfices non distribués destinés à des investissements aux Îles Canaries.',
+    'ref.f3.title':'Déduction pour Investissements (DIC)','ref.f3.desc':'Déductions supplémentaires jusqu\'à 25% sur les investissements en nouveaux actifs.',
+    'ref.f4.title':'IGIC vs TVA','ref.f4.desc':'Taux général de 7% contre 21% en Espagne continentale. Gestion spécialisée de toutes ses particularités.',
+    'pr.label':'Comment nous travaillons','pr.title':'Un processus clair<br><strong>sans surprises</strong>',
+    'pr.s1.title':'Consultation Initiale','pr.s1.desc':'Première réunion gratuite pour analyser votre situation fiscale. Sans engagement. Dans votre langue.',
+    'pr.s2.title':'Diagnostic','pr.s2.desc':'Analyse détaillée de votre structure et identification de toutes les opportunités d\'optimisation fiscale.',
+    'pr.s3.title':'Stratégie','pr.s3.desc':'Plan fiscal personnalisé maximisant les avantages du REF canarien pour votre cas spécifique.',
+    'pr.s4.title':'Accompagnement','pr.s4.desc':'Gestion continue et conseil permanent tout au long de l\'année fiscale.',
+    'ct.label':'Contact','ct.title':'Parlons de<br><strong>votre fiscalité</strong>','ct.sub':'Première consultation gratuite et sans engagement.',
+    'ct.email':'E-mail','ct.phone':'Téléphone','ct.addr':'Adresse',
+    'ct.f.name':'Nom','ct.f.name_ph':'Votre nom','ct.f.company':'Entreprise','ct.f.company_ph':'Nom de l\'entreprise','ct.f.email':'E-mail','ct.f.phone':'Téléphone','ct.f.service':'Service','ct.f.service_ph':'Sélectionnez un service','ct.f.msg':'Message','ct.f.msg_ph':'Décrivez brièvement votre situation...','ct.f.submit':'Envoyer la demande →',
+    'footer.copy':'© 2026 Fiscalidad Canaria · Tous droits réservés','footer.privacy':'Confidentialité','footer.legal':'Mentions Légales','footer.cookies':'Cookies',
+    'nav.team':'Équipe',
+    'team.label':'L\'équipe','team.title':'Professionnels avec une <strong>vraie expérience</strong>','team.sub':'Plus de trois décennies de conseil aux entreprises et particuliers sur le Régime Fiscal des Canaries.',
+    'team.m1.name':'Raúl Labao','team.m1.role':'Directeur · Avocat & Économiste','team.m1.bio':'Spécialiste du Régime Économique et Fiscal des Canaries. Plus de 20 ans d\'optimisation fiscale pour des entreprises locales et internationales.',
+    'team.m2.name':'— Nom —','team.m2.role':'— Poste —','team.m2.bio':'Description du membre de l\'équipe.',
+    'team.m3.name':'— Nom —','team.m3.role':'— Poste —','team.m3.bio':'Description du membre de l\'équipe.',
+    'team.m4.name':'— Nom —','team.m4.role':'— Poste —','team.m4.bio':'Description du membre de l\'équipe.',
+    'ticker':['ZEC Zone Spéciale Canarienne','RIC Réserve Investissements','IGIC Taxe Indirecte','Planification Fiscale','Conseil Juridique','Impôt sur les Sociétés','Droit Commercial','IRPF & Patrimoine']
   }
 };
 
@@ -879,7 +970,7 @@ function closeMobile(){
   document.body.style.overflow='';
 }
 function updateMobileLangs(){
-  ['es','en','de'].forEach(l=>{
+  ['es','en','de','it','fr'].forEach(l=>{
     document.getElementById('ml-'+l).classList.toggle('active',l===currentLang);
   });
 }
