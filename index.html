@@ -1043,48 +1043,5 @@ function rejectCookies(){
 </div>
 
 
-<script>
-/* ── VOZ DE BIENVENIDA ── */
-(function(){
-  let done = false;
-
-  function speak(){
-    if(done || !window.speechSynthesis) return;
-    done = true;
-
-    const say = (text) => {
-      const u = new SpeechSynthesisUtterance(text);
-      u.lang    = 'es-ES';
-      u.rate    = 0.82;   /* pausado, solemne */
-      u.pitch   = 0.88;   /* voz más grave y seria */
-      u.volume  = 0.9;
-
-      /* Elegir la mejor voz española disponible */
-      const voices = speechSynthesis.getVoices();
-      const esVoice = voices.find(v => v.lang === 'es-ES' && v.name.toLowerCase().includes('google'))
-                   || voices.find(v => v.lang === 'es-ES')
-                   || voices.find(v => v.lang.startsWith('es'));
-      if(esVoice) u.voice = esVoice;
-
-      speechSynthesis.speak(u);
-    };
-
-    /* Las voces pueden no estar listas aún — esperar si es necesario */
-    if(speechSynthesis.getVoices().length > 0){
-      say('Bienvenidos');
-    } else {
-      speechSynthesis.onvoiceschanged = () => { say('Bienvenidos'); };
-    }
-  }
-
-  /* Intentar al cargar (funciona en algunos navegadores) */
-  window.addEventListener('load', () => setTimeout(speak, 2200));
-
-  /* Fallback: primera interacción del usuario */
-  ['click','touchstart'].forEach(e =>
-    document.addEventListener(e, speak, {once: true, passive: true})
-  );
-})();
-</script>
 </body>
 </html>
