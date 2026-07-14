@@ -1060,63 +1060,62 @@ function rejectCookies(){
 /* ── AMBIENT MUSIC ENGINE ── */
 (function(){
   let ctx, masterGain, reverbNode, playing=false, btn=document.getElementById('musicBtn');
-  const MASTER_VOL=0.06;
+  const MASTER_VOL=0.045;
 
-  /* Impulse reverb */
-  function makeReverb(audioCtx, seconds=3.5, decay=2.5){
+  /* Impulse reverb — longer, more spacious */
+  function makeReverb(audioCtx, seconds=5, decay=3){
     const rate=audioCtx.sampleRate, len=rate*seconds, buf=audioCtx.createBuffer(2,len,rate);
     for(let c=0;c<2;c++){const d=buf.getChannelData(c);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,decay);}
     const node=audioCtx.createConvolver(); node.buffer=buf; return node;
   }
 
-  /* Single oscillator pad voice */
-  function makePad(freq, type='sine', detune=0, vol=0.22){
+  /* Sustained pad voice — very quiet background */
+  function makePad(freq, type='sine', detune=0, vol=0.08){
     const osc=ctx.createOscillator(), g=ctx.createGain();
     osc.type=type; osc.frequency.value=freq; osc.detune.value=detune;
     g.gain.setValueAtTime(0,ctx.currentTime);
-    g.gain.linearRampToValueAtTime(vol,ctx.currentTime+4);
+    g.gain.linearRampToValueAtTime(vol,ctx.currentTime+6);
     osc.connect(g); g.connect(reverbNode); g.connect(masterGain);
     osc.start(); return {osc,g};
   }
 
-  /* Schedule a melody note */
-  function playNote(freq, startTime, duration, vol=0.12){
+  /* Melody note — piano-like with soft attack and long tail */
+  function playNote(freq, startTime, duration, vol=0.28){
     const osc=ctx.createOscillator(), g=ctx.createGain();
     osc.type='triangle'; osc.frequency.value=freq;
+    /* Slight second harmonic for warmth */
+    const osc2=ctx.createOscillator(), g2=ctx.createGain();
+    osc2.type='sine'; osc2.frequency.value=freq*2; g2.gain.value=0.06;
     g.gain.setValueAtTime(0,startTime);
-    g.gain.linearRampToValueAtTime(vol,startTime+0.6);
-    g.gain.linearRampToValueAtTime(0,startTime+duration-0.4);
+    g.gain.linearRampToValueAtTime(vol,startTime+0.08);   /* fast attack */
+    g.gain.exponentialRampToValueAtTime(vol*0.55,startTime+0.4);
+    g.gain.exponentialRampToValueAtTime(0.001,startTime+duration);
     osc.connect(g); g.connect(reverbNode); g.connect(masterGain);
-    osc.start(startTime); osc.stop(startTime+duration);
+    osc2.connect(g2); g2.connect(reverbNode);
+    osc.start(startTime); osc.stop(startTime+duration+0.1);
+    osc2.start(startTime); osc2.stop(startTime+duration+0.1);
   }
 
-  /* D minor pentatonic + extensions */
-  const SCALE=[
-    146.83,  /* D3 */
-    174.61,  /* F3 */
-    196.00,  /* G3 */
-    220.00,  /* A3 */
-    261.63,  /* C4 */
-    293.66,  /* D4 */
-    349.23,  /* F4 */
-    392.00,  /* G4 */
-    440.00,  /* A4 */
-    523.25,  /* C5 */
-    587.33,  /* D5 */
-  ];
+  /* D minor — melodic phrase, note every ~2s */
+  /* D4=293.66  E4=329.63  F4=349.23  G4=392  A4=440  Bb4=466.16  C5=523.25  D5=587.33 */
+  const D4=293.66,E4=329.63,F4=349.23,G4=392.00,A4=440.00,Bb4=466.16,C5=523.25,D5=587.33,
+        A3=220.00,C4=261.63,F3=174.61,D3=146.83;
 
-  /* Sequence: slow, sparse, sophisticated */
+  /* 32-second melodic loop — gentle, singable */
   const SEQ=[
-    [4,SCALE[2]], [7,SCALE[5]], [10,SCALE[4]], [14,SCALE[7]],
-    [18,SCALE[3]], [22,SCALE[6]], [26,SCALE[1]], [30,SCALE[8]],
-    [34,SCALE[5]], [38,SCALE[4]], [42,SCALE[9]], [46,SCALE[7]],
-    [50,SCALE[2]], [54,SCALE[10]],[58,SCALE[5]], [62,SCALE[6]],
+    [0,  D4, 2.2],[2.2,F4, 2.2],[4.4,A4, 2.5],[7,  C5, 3.0],
+    [10, A4, 2.0],[12, G4, 2.0],[14, F4, 2.2],[16.2,E4,2.0],
+    [18.2,F4,2.5],[20.7,A4,2.0],[22.7,D5,3.5],[26.2,C5,2.0],
+    [28.2,A4,2.0],[30.2,G4,2.0],[32.2,F4,2.5],[34.7,D4,3.5],
+    /* second phrase — lower, more intimate */
+    [38.2,A3,2.5],[40.7,C4,2.2],[42.9,D4,2.2],[45.1,F4,2.5],
+    [47.6,E4,2.0],[49.6,D4,2.0],[51.6,C4,2.5],[54.1,A3,4.0],
   ];
-  const LOOP_DUR=68;
+  const LOOP_DUR=60;
   let loopStart, pads=[], loopTOs=[];
 
   function scheduleLoop(loopTime){
-    SEQ.forEach(([beat,freq])=>playNote(freq,loopTime+beat,5.5));
+    SEQ.forEach(([beat,freq,dur])=>playNote(freq,loopTime+beat,dur));
     loopTOs.push(setTimeout(()=>scheduleLoop(loopTime+LOOP_DUR),((loopTime+LOOP_DUR)-ctx.currentTime-2)*1000));
   }
 
@@ -1124,16 +1123,11 @@ function rejectCookies(){
     ctx=new (window.AudioContext||window.webkitAudioContext)();
     masterGain=ctx.createGain(); masterGain.gain.value=MASTER_VOL; masterGain.connect(ctx.destination);
     reverbNode=makeReverb(ctx); reverbNode.connect(masterGain);
-    /* Low bass drone — root D */
-    pads.push(makePad(36.71,'sine',0,0.35));    /* D1 sub-bass */
-    pads.push(makePad(73.42,'sine',0,0.18));    /* D2 bass */
-    /* Pads — D minor chord tones */
-    pads.push(makePad(146.83,'sine',3,0.14));
-    pads.push(makePad(174.61,'sine',-4,0.12));
-    pads.push(makePad(220.00,'sine',6,0.10));
-    pads.push(makePad(261.63,'sine',-2,0.09));
-    pads.push(makePad(293.66,'triangle',8,0.07));
-    loopStart=ctx.currentTime+2;
+    /* Very quiet bass drone */
+    pads.push(makePad(73.42,'sine',0,0.06));
+    pads.push(makePad(146.83,'sine',3,0.04));
+    pads.push(makePad(220.00,'sine',-3,0.03));
+    loopStart=ctx.currentTime+1;
     scheduleLoop(loopStart);
     playing=true; btn.classList.add('playing');
   }
