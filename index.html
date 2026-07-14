@@ -340,20 +340,32 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
   .services-grid,.forwho-grid,.team-grid{grid-template-columns:1fr}
   .team-card:nth-child(n){border-right:none;border-top:1px solid var(--border)}
   .team-card:first-child{border-top:none}
-  .hero-title{font-size:clamp(40px,11vw,64px)}
-  .hero-trust{flex-direction:column;gap:12px;align-items:center}
+
+  /* ── HERO MÓVIL ── */
+  .hero{height:auto;min-height:100svh;padding:100px 24px 60px;align-items:center}
+  .hero-content{padding:0;width:100%}
+  .hero-badge{font-size:8px;letter-spacing:1.5px;padding:6px 14px;margin-bottom:24px;white-space:normal;text-align:center}
+  .hero-title{font-size:clamp(36px,10vw,56px);line-height:1.1}
+  .hero-sub{font-size:14px;margin-top:20px;line-height:1.75}
+  .hero-actions{margin-top:32px;gap:12px;flex-direction:column;align-items:center}
+  .btn-gold,.btn-ghost{padding:14px 36px;width:100%;max-width:280px;text-align:center}
+  .hero-trust{margin-top:28px;flex-direction:column;gap:10px;align-items:center}
   .trust-item{font-size:12px}
+  .hero-scroll{display:none}
+
   .process-grid{grid-template-columns:1fr}
   .process-step{border-right:none;border-bottom:1px solid var(--border)}
   .process-step:last-child{border-bottom:none}
   .ps-dot{display:none}
   .form-row{grid-template-columns:1fr}
   footer{flex-direction:column;gap:16px;text-align:center;padding:32px 20px}
-  .hero-scroll{display:none}
   .ref-feat{flex-wrap:wrap}
   .ref-pct{font-size:22px}
-  .hero-badge{font-size:9px;letter-spacing:2px}
   .ticker{display:none}
+
+  /* logo móvil */
+  .logo-title{font-size:15px;letter-spacing:2px}
+  .logo-img{height:14px}
 }
 </style>
 </head>
@@ -438,7 +450,7 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
 <!-- STATS -->
 <div class="stats-section">
   <div class="stats-grid">
-    <div class="stat-item rv"><div class="stat-num" data-target="30" data-suffix="+">0</div><div class="stat-label" data-i18n="stat.1">Años de experiencia</div></div>
+    <div class="stat-item rv"><div class="stat-num" data-target="30" data-suffix="+">0</div><div class="stat-label" data-i18n="stat.1">Más de 30 años de experiencia</div></div>
     <div class="stat-item rv d1"><div class="stat-num" data-target="350" data-suffix="+">0</div><div class="stat-label" data-i18n="stat.2">Clientes satisfechos</div></div>
     <div class="stat-item rv d2"><div class="stat-num" data-target="15" data-suffix="M€">0</div><div class="stat-label" data-i18n="stat.3">Millones optimizados</div></div>
     <div class="stat-item rv d3"><div class="stat-num" data-target="98" data-suffix="%">0</div><div class="stat-label" data-i18n="stat.4">Tasa de satisfacción</div></div>
@@ -657,7 +669,7 @@ const T = {
     'hero.cta1':'Empieza aquí →','hero.cta2':'¿Es para mí?',
     'trust.1':'','trust.2':'Primera consulta gratuita','trust.3':'+30 años de experiencia',
     'scroll':'Descubrir',
-    'stat.1':'Años de experiencia','stat.2':'Clientes satisfechos','stat.3':'Millones optimizados','stat.4':'Tasa de satisfacción',
+    'stat.1':'Más de 30 años de experiencia','stat.2':'Clientes satisfechos','stat.3':'Millones optimizados','stat.4':'Tasa de satisfacción',
     'fw.label':'Para quién','fw.title':'Diseñado para quienes <strong>piensan en grande</strong>',
     'fw.c1.title':'Emprendedores digitales','fw.c1.desc':'Freelancers, nómadas digitales y fundadores de startups que buscan una base legal y fiscal sólida en Europa con impuestos reducidos.','fw.c1.tag':'ZEC · 4% IS',
     'fw.c2.title':'Inversores internacionales','fw.c2.desc':'Empresas y particulares de fuera de España que quieren establecerse en suelo europeo aprovechando el régimen fiscal especial canario.','fw.c2.tag':'REF · RIC · DIC',
