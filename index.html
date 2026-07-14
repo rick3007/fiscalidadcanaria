@@ -608,18 +608,22 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
       </div>
     </div>
     <div class="rv d1">
-      <form class="form" id="contactForm">
+      <form class="form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="PENDING_WEB3FORMS_KEY">
+        <input type="hidden" name="subject" value="Nueva consulta — Fiscalidad Canaria">
+        <input type="hidden" name="from_name" value="Fiscalidad Canaria Web">
+        <input type="hidden" name="redirect" value="false">
         <div class="form-row">
-          <div class="fg"><label data-i18n="ct.f.name">Nombre</label><input type="text" data-i18n-ph="ct.f.name_ph" placeholder="Tu nombre"></div>
-          <div class="fg"><label data-i18n="ct.f.company">Empresa</label><input type="text" data-i18n-ph="ct.f.company_ph" placeholder="Nombre de empresa"></div>
+          <div class="fg"><label data-i18n="ct.f.name">Nombre</label><input type="text" name="nombre" required data-i18n-ph="ct.f.name_ph" placeholder="Tu nombre"></div>
+          <div class="fg"><label data-i18n="ct.f.company">Empresa</label><input type="text" name="empresa" data-i18n-ph="ct.f.company_ph" placeholder="Nombre de empresa"></div>
         </div>
         <div class="form-row">
-          <div class="fg"><label data-i18n="ct.f.email">Email</label><input type="email" placeholder="tu@email.com"></div>
-          <div class="fg"><label data-i18n="ct.f.phone">Teléfono</label><input type="tel" placeholder="+34 000 000 000"></div>
+          <div class="fg"><label data-i18n="ct.f.email">Email</label><input type="email" name="email" required placeholder="tu@email.com"></div>
+          <div class="fg"><label data-i18n="ct.f.phone">Teléfono</label><input type="tel" name="telefono" placeholder="+34 000 000 000"></div>
         </div>
         <div class="fg">
           <label data-i18n="ct.f.service">Servicio</label>
-          <select id="serviceSelect">
+          <select name="servicio" id="serviceSelect">
             <option value="" data-i18n="ct.f.service_ph">Selecciona un servicio</option>
             <option data-i18n="sv.c1.title">Asesoría Fiscal Empresarial</option>
             <option data-i18n="sv.c3.title">ZEC — Zona Especial Canaria</option>
@@ -629,7 +633,7 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
             <option data-i18n="sv.c6.title">IRPF & Patrimonio</option>
           </select>
         </div>
-        <div class="fg"><label data-i18n="ct.f.msg">Mensaje</label><textarea rows="5" data-i18n-ph="ct.f.msg_ph" placeholder="Cuéntanos brevemente tu situación..."></textarea></div>
+        <div class="fg"><label data-i18n="ct.f.msg">Mensaje</label><textarea rows="5" name="mensaje" data-i18n-ph="ct.f.msg_ph" placeholder="Cuéntanos brevemente tu situación..."></textarea></div>
         <button type="submit" class="form-submit" data-i18n="ct.f.submit">Enviar Consulta →</button>
       </form>
     </div>
@@ -896,11 +900,33 @@ function updateMobileLangs(){
 }
 
 /* ── FORM ── */
-document.getElementById('contactForm').addEventListener('submit',e=>{
+document.getElementById('contactForm').addEventListener('submit', async e=>{
   e.preventDefault();
-  const btn=e.target.querySelector('button');
-  btn.textContent='✓ '+(currentLang==='es'?'Consulta enviada — Contactaremos en 24h':currentLang==='en'?'Sent — We\'ll be in touch within 24h':'Gesendet — Wir melden uns innerhalb von 24h');
-  btn.style.background='#1a5c2e';
+  const btn = e.target.querySelector('button');
+  const orig = btn.textContent;
+  btn.textContent = currentLang==='es'?'Enviando...':currentLang==='en'?'Sending...':'Wird gesendet...';
+  btn.style.opacity = '0.7';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      body: new FormData(e.target)
+    });
+    const data = await res.json();
+    if(data.success){
+      btn.textContent = '✓ '+(currentLang==='es'?'Consulta enviada — Contactaremos en 24h':currentLang==='en'?'Sent — We\'ll be in touch within 24h':'Gesendet — Wir melden uns innerhalb von 24h');
+      btn.style.background='#1a5c2e';
+      btn.style.opacity='1';
+      e.target.reset();
+    } else {
+      throw new Error(data.message);
+    }
+  } catch(err){
+    btn.textContent = orig;
+    btn.style.opacity='1';
+    btn.disabled=false;
+    alert(currentLang==='es'?'Error al enviar. Por favor llámenos al +34 928 381 131':currentLang==='en'?'Error sending. Please call +34 928 381 131':'Fehler beim Senden. Bitte rufen Sie an: +34 928 381 131');
+  }
 });
 /* ── LEGAL MODALS ── */
 function openLegal(id){
