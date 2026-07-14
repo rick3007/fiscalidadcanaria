@@ -381,7 +381,6 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
   <a href="#servicios" onclick="closeMobile()" data-i18n="nav.services">Servicios</a>
   <a href="#ref" onclick="closeMobile()" data-i18n="nav.ref">REF Canarias</a>
   <a href="#equipo" onclick="closeMobile()" data-i18n="nav.team">Equipo</a>
-  <a href="#contacto" onclick="closeMobile()" data-i18n="nav.contact">Contacto</a>
   <div class="mobile-menu-langs">
     <button onclick="setLang('es');updateMobileLangs()" id="ml-es">ES</button>
     <button onclick="setLang('en');updateMobileLangs()" id="ml-en">EN</button>
@@ -399,7 +398,6 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
     <li><a href="#para-quien" data-i18n="nav.forwho">Para quién</a></li>
     <li><a href="#servicios" data-i18n="nav.services">Servicios</a></li>
     <li><a href="#ref" data-i18n="nav.ref">REF Canarias</a></li>
-    <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
   </ul>
   <div class="nav-right">
     <div class="lang-switcher">
@@ -407,7 +405,6 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
       <button class="lang-btn" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('de')">DE</button>
     </div>
-    <a href="#contacto" class="nav-cta"><span data-i18n="nav.cta">Consulta Gratuita</span></a>
     <div class="hamburger" id="hamburger" onclick="toggleMobile()">
       <span></span><span></span><span></span>
     </div>
@@ -433,8 +430,8 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
       Canarias ofrece uno de los regímenes fiscales más ventajosos de Europa. Te ayudamos a instalarte, optimizar impuestos y crecer — sin importar de dónde seas.
     </p>
     <div class="hero-actions" id="heroActions">
-      <a href="#contacto" class="btn-gold" data-i18n="hero.cta1">Empieza aquí →</a>
-      <a href="#para-quien" class="btn-ghost" data-i18n="hero.cta2">¿Es para mí?</a>
+      <a href="#para-quien" class="btn-gold" data-i18n="hero.cta2">¿Es para mí?</a>
+      <a href="#servicios" class="btn-ghost" data-i18n="nav.services">Servicios</a>
     </div>
     <div class="hero-trust" id="heroTrust">
       <div class="trust-item"><span class="trust-icon">✓</span><span data-i18n="trust.2">Primera consulta gratuita</span></div>
@@ -606,50 +603,6 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
   </div>
 </section>
 
-<!-- CONTACTO -->
-<section class="contact-section" id="contacto">
-  <div class="contact-inner">
-    <div>
-      <div class="rv"><p class="s-label" data-i18n="ct.label">Contacto</p><h2 class="s-title" data-i18n="ct.title">Hablemos de<br><strong>tu fiscalidad</strong></h2><p style="color:var(--muted);margin-top:20px;line-height:1.85;font-weight:300;font-size:15px" data-i18n="ct.sub">Primera consulta gratuita y sin compromiso.</p></div>
-      <div class="contact-info">
-        <div class="ci rv d1"><div class="ci-icon">✉</div><div><div class="ci-label" data-i18n="ct.email">Email</div><div class="ci-val">fiscal@alfiscocanaria.com</div></div></div>
-        <div class="ci rv d2"><div class="ci-icon">☎</div><div><div class="ci-label" data-i18n="ct.phone">Teléfono</div><div class="ci-val">+34 928 381 131</div></div></div>
-        <div class="ci rv d3"><div class="ci-icon">⌖</div><div><div class="ci-label" data-i18n="ct.addr">Dirección</div><div class="ci-val">Calle Triana, 104, 3º B<br>Las Palmas de Gran Canaria</div></div></div>
-      </div>
-    </div>
-    <div class="rv d1">
-      <form class="form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="PENDING_WEB3FORMS_KEY">
-        <input type="hidden" name="subject" value="Nueva consulta — Fiscalidad Canaria">
-        <input type="hidden" name="from_name" value="Fiscalidad Canaria Web">
-        <input type="hidden" name="redirect" value="false">
-        <div class="form-row">
-          <div class="fg"><label data-i18n="ct.f.name">Nombre</label><input type="text" name="nombre" required data-i18n-ph="ct.f.name_ph" placeholder="Tu nombre"></div>
-          <div class="fg"><label data-i18n="ct.f.company">Empresa</label><input type="text" name="empresa" data-i18n-ph="ct.f.company_ph" placeholder="Nombre de empresa"></div>
-        </div>
-        <div class="form-row">
-          <div class="fg"><label data-i18n="ct.f.email">Email</label><input type="email" name="email" required placeholder="tu@email.com"></div>
-          <div class="fg"><label data-i18n="ct.f.phone">Teléfono</label><input type="tel" name="telefono" placeholder="+34 000 000 000"></div>
-        </div>
-        <div class="fg">
-          <label data-i18n="ct.f.service">Servicio</label>
-          <select name="servicio" id="serviceSelect">
-            <option value="" data-i18n="ct.f.service_ph">Selecciona un servicio</option>
-            <option data-i18n="sv.c1.title">Asesoría Fiscal Empresarial</option>
-            <option data-i18n="sv.c3.title">ZEC — Zona Especial Canaria</option>
-            <option data-i18n="sv.c4.title">RIC — Reserva de Inversiones</option>
-            <option data-i18n="sv.c2.title">IGIC & Fiscalidad Indirecta</option>
-            <option data-i18n="sv.c5.title">Asesoría Jurídica Mercantil</option>
-            <option data-i18n="sv.c6.title">IRPF & Patrimonio</option>
-            <option data-i18n="sv.c7.title">Ley de Segunda Oportunidad</option>
-          </select>
-        </div>
-        <div class="fg"><label data-i18n="ct.f.msg">Mensaje</label><textarea rows="5" name="mensaje" data-i18n-ph="ct.f.msg_ph" placeholder="Cuéntanos brevemente tu situación..."></textarea></div>
-        <button type="submit" class="form-submit" data-i18n="ct.f.submit">Enviar Consulta →</button>
-      </form>
-    </div>
-  </div>
-</section>
 
 <footer>
   <div class="f-logo">FISCALIDAD<span>CANARIA</span></div>
@@ -913,35 +866,6 @@ function updateMobileLangs(){
   });
 }
 
-/* ── FORM ── */
-document.getElementById('contactForm').addEventListener('submit', async e=>{
-  e.preventDefault();
-  const btn = e.target.querySelector('button');
-  const orig = btn.textContent;
-  btn.textContent = currentLang==='es'?'Enviando...':currentLang==='en'?'Sending...':'Wird gesendet...';
-  btn.style.opacity = '0.7';
-  btn.disabled = true;
-  try {
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method:'POST',
-      body: new FormData(e.target)
-    });
-    const data = await res.json();
-    if(data.success){
-      btn.textContent = '✓ '+(currentLang==='es'?'Consulta enviada — Contactaremos en 24h':currentLang==='en'?'Sent — We\'ll be in touch within 24h':'Gesendet — Wir melden uns innerhalb von 24h');
-      btn.style.background='#1a5c2e';
-      btn.style.opacity='1';
-      e.target.reset();
-    } else {
-      throw new Error(data.message);
-    }
-  } catch(err){
-    btn.textContent = orig;
-    btn.style.opacity='1';
-    btn.disabled=false;
-    alert(currentLang==='es'?'Error al enviar. Por favor llámenos al +34 928 381 131':currentLang==='en'?'Error sending. Please call +34 928 381 131':'Fehler beim Senden. Bitte rufen Sie an: +34 928 381 131');
-  }
-});
 /* ── LEGAL MODALS ── */
 function openLegal(id){
   document.getElementById(id).classList.add('open');
