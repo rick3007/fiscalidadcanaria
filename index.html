@@ -367,11 +367,26 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
   .logo-title{font-size:15px;letter-spacing:2px}
   .logo-img{height:14px}
 }
+
+/* ── MUSIC PLAYER ── */
+#musicBtn{position:fixed;bottom:28px;right:28px;z-index:900;width:44px;height:44px;border-radius:50%;border:1px solid rgba(201,168,76,.35);background:rgba(4,6,13,.85);backdrop-filter:blur(12px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .3s,transform .2s,box-shadow .3s;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+#musicBtn:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(201,168,76,.2);transform:scale(1.08)}
+#musicBtn svg{width:18px;height:18px;fill:var(--gold);opacity:.85;transition:opacity .3s}
+#musicBtn:hover svg{opacity:1}
+#musicBtn.playing svg.icon-play{display:none}
+#musicBtn.playing svg.icon-pause{display:block}
+#musicBtn:not(.playing) svg.icon-play{display:block}
+#musicBtn:not(.playing) svg.icon-pause{display:none}
 </style>
 </head>
 <body>
 
 <div id="preloader"><div class="pre-logo">FISCALIDAD CANARIA</div><div class="pre-bar"></div></div>
+
+<button id="musicBtn" title="Música ambiental" aria-label="Activar música">
+  <svg class="icon-play" viewBox="0 0 24 24"><path d="M9 18V5l12 6.5L9 18z"/></svg>
+  <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+</button>
 <div class="c-dot" id="cDot"></div>
 <div class="c-ring" id="cRing"></div>
 
@@ -1040,5 +1055,102 @@ function rejectCookies(){
   </div>
 </div>
 
+
+<script>
+/* ── AMBIENT MUSIC ENGINE ── */
+(function(){
+  let ctx, masterGain, reverbNode, playing=false, btn=document.getElementById('musicBtn');
+  const MASTER_VOL=0.13;
+
+  /* Impulse reverb */
+  function makeReverb(audioCtx, seconds=3.5, decay=2.5){
+    const rate=audioCtx.sampleRate, len=rate*seconds, buf=audioCtx.createBuffer(2,len,rate);
+    for(let c=0;c<2;c++){const d=buf.getChannelData(c);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,decay);}
+    const node=audioCtx.createConvolver(); node.buffer=buf; return node;
+  }
+
+  /* Single oscillator pad voice */
+  function makePad(freq, type='sine', detune=0, vol=0.22){
+    const osc=ctx.createOscillator(), g=ctx.createGain();
+    osc.type=type; osc.frequency.value=freq; osc.detune.value=detune;
+    g.gain.setValueAtTime(0,ctx.currentTime);
+    g.gain.linearRampToValueAtTime(vol,ctx.currentTime+4);
+    osc.connect(g); g.connect(reverbNode); g.connect(masterGain);
+    osc.start(); return {osc,g};
+  }
+
+  /* Schedule a melody note */
+  function playNote(freq, startTime, duration, vol=0.12){
+    const osc=ctx.createOscillator(), g=ctx.createGain();
+    osc.type='triangle'; osc.frequency.value=freq;
+    g.gain.setValueAtTime(0,startTime);
+    g.gain.linearRampToValueAtTime(vol,startTime+0.6);
+    g.gain.linearRampToValueAtTime(0,startTime+duration-0.4);
+    osc.connect(g); g.connect(reverbNode); g.connect(masterGain);
+    osc.start(startTime); osc.stop(startTime+duration);
+  }
+
+  /* D minor pentatonic + extensions */
+  const SCALE=[
+    146.83,  /* D3 */
+    174.61,  /* F3 */
+    196.00,  /* G3 */
+    220.00,  /* A3 */
+    261.63,  /* C4 */
+    293.66,  /* D4 */
+    349.23,  /* F4 */
+    392.00,  /* G4 */
+    440.00,  /* A4 */
+    523.25,  /* C5 */
+    587.33,  /* D5 */
+  ];
+
+  /* Sequence: slow, sparse, sophisticated */
+  const SEQ=[
+    [4,SCALE[2]], [7,SCALE[5]], [10,SCALE[4]], [14,SCALE[7]],
+    [18,SCALE[3]], [22,SCALE[6]], [26,SCALE[1]], [30,SCALE[8]],
+    [34,SCALE[5]], [38,SCALE[4]], [42,SCALE[9]], [46,SCALE[7]],
+    [50,SCALE[2]], [54,SCALE[10]],[58,SCALE[5]], [62,SCALE[6]],
+  ];
+  const LOOP_DUR=68;
+  let loopStart, pads=[], loopTOs=[];
+
+  function scheduleLoop(loopTime){
+    SEQ.forEach(([beat,freq])=>playNote(freq,loopTime+beat,5.5));
+    loopTOs.push(setTimeout(()=>scheduleLoop(loopTime+LOOP_DUR),((loopTime+LOOP_DUR)-ctx.currentTime-2)*1000));
+  }
+
+  function startMusic(){
+    ctx=new (window.AudioContext||window.webkitAudioContext)();
+    masterGain=ctx.createGain(); masterGain.gain.value=MASTER_VOL; masterGain.connect(ctx.destination);
+    reverbNode=makeReverb(ctx); reverbNode.connect(masterGain);
+    /* Low bass drone — root D */
+    pads.push(makePad(36.71,'sine',0,0.35));    /* D1 sub-bass */
+    pads.push(makePad(73.42,'sine',0,0.18));    /* D2 bass */
+    /* Pads — D minor chord tones */
+    pads.push(makePad(146.83,'sine',3,0.14));
+    pads.push(makePad(174.61,'sine',-4,0.12));
+    pads.push(makePad(220.00,'sine',6,0.10));
+    pads.push(makePad(261.63,'sine',-2,0.09));
+    pads.push(makePad(293.66,'triangle',8,0.07));
+    loopStart=ctx.currentTime+2;
+    scheduleLoop(loopStart);
+    playing=true; btn.classList.add('playing');
+  }
+
+  function stopMusic(){
+    loopTOs.forEach(clearTimeout); loopTOs=[];
+    pads.forEach(({osc,g})=>{
+      g.gain.setValueAtTime(g.gain.value,ctx.currentTime);
+      g.gain.linearRampToValueAtTime(0,ctx.currentTime+1.5);
+      osc.stop(ctx.currentTime+1.6);
+    });
+    setTimeout(()=>{ try{ctx.close();}catch(e){} pads=[]; ctx=null; },1700);
+    playing=false; btn.classList.remove('playing');
+  }
+
+  btn.addEventListener('click',()=>{ if(!playing) startMusic(); else stopMusic(); });
+})();
+</script>
 </body>
 </html>
