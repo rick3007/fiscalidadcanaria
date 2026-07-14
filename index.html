@@ -1150,6 +1150,13 @@ function rejectCookies(){
   }
 
   btn.addEventListener('click',()=>{ if(!playing) startMusic(); else stopMusic(); });
+
+  /* Autoplay on first user interaction (browser policy requires it) */
+  function onFirstInteraction(){
+    if(!playing) startMusic();
+    ['click','touchstart','keydown','scroll'].forEach(e=>document.removeEventListener(e,onFirstInteraction));
+  }
+  ['click','touchstart','keydown','scroll'].forEach(e=>document.addEventListener(e,onFirstInteraction,{once:true,passive:true}));
 })();
 </script>
 </body>
