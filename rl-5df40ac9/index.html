@@ -271,6 +271,24 @@ html,body{
 }
 .toast.show{opacity:1}
 
+.qr-section{
+  padding:20px 32px 24px;
+  border-top:1px solid rgba(201,168,76,.08);
+  text-align:center;
+}
+.qr-wrap{
+  display:inline-block;
+  padding:10px;
+  border:1px solid var(--border);
+  background:rgba(201,168,76,.03);
+  margin-bottom:10px;
+}
+.qr-hint{
+  font-size:10px;
+  color:var(--muted);
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
 @media(max-width:460px){
   .hero{height:260px}
   .hero-name{font-size:32px}
@@ -368,6 +386,18 @@ html,body{
   <!-- CTA -->
   <div class="card-footer">
     <button class="btn-save" onclick="saveContact()">Guardar contacto</button>
+  </div>
+
+  <!-- QR -->
+  <div class="qr-section">
+    <div class="expertise-title" style="text-align:center;margin-bottom:16px;">Comparte esta tarjeta</div>
+    <div class="qr-wrap">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&color=c9a84c&bgcolor=07091a&qzone=2&data=https%3A%2F%2Ffiscalidadcanaria.com%2Frl-5df40ac9%2F"
+           alt="QR tarjeta de visita Raúl Labao"
+           width="160" height="160"
+           style="display:block;">
+    </div>
+    <div class="qr-hint">Escanea con la cámara del móvil</div>
   </div>
 
   <!-- Brand -->
