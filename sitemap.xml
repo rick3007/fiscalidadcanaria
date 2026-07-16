@@ -19,11 +19,39 @@
   <url><loc>https://fiscalidadcanaria.com/de/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://fiscalidadcanaria.com/it/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://fiscalidadcanaria.com/fr/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <!-- Blog -->
+  <!-- Blog ES -->
   <url><loc>https://fiscalidadcanaria.com/blog/</loc><lastmod>2026-07-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://fiscalidadcanaria.com/blog/zec-zona-especial-canaria/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://fiscalidadcanaria.com/blog/ric-reserva-inversiones-canarias/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://fiscalidadcanaria.com/blog/igic-vs-iva/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://fiscalidadcanaria.com/blog/ley-segunda-oportunidad-canarias/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://fiscalidadcanaria.com/blog/regimen-fiscal-canario-internacionales/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <!-- Blog EN -->
+  <url><loc>https://fiscalidadcanaria.com/en/blog/</loc><lastmod>2026-07-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/en/blog/zec-canary-islands-special-zone/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/en/blog/ric-canary-islands-investment-reserve/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/en/blog/igic-vs-vat/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/en/blog/second-chance-law-canary-islands/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/en/blog/canary-islands-tax-regime-international-entrepreneurs/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <!-- Blog DE -->
+  <url><loc>https://fiscalidadcanaria.com/de/blog/</loc><lastmod>2026-07-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/de/blog/zec-sonderwirtschaftszone-kanarische-inseln/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/de/blog/ric-investitionsruecklage-kanarische-inseln/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/de/blog/igic-vs-mehrwertsteuer/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/de/blog/gesetz-zweite-chance-kanarische-inseln/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/de/blog/steuerregime-kanarische-inseln-internationale-unternehmer/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <!-- Blog IT -->
+  <url><loc>https://fiscalidadcanaria.com/it/blog/</loc><lastmod>2026-07-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/it/blog/zec-zona-speciale-canaria/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/it/blog/ric-riserva-investimenti-canarie/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/it/blog/igic-vs-iva-canarie/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/it/blog/legge-seconda-opportunita-canarie/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/it/blog/regime-fiscale-canario-imprenditori-internazionali/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <!-- Blog FR -->
+  <url><loc>https://fiscalidadcanaria.com/fr/blog/</loc><lastmod>2026-07-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/fr/blog/zec-zone-speciale-canarienne/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/fr/blog/ric-reserve-investissements-canaries/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/fr/blog/igic-vs-tva/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/fr/blog/loi-seconde-chance-canaries/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fiscalidadcanaria.com/fr/blog/regime-fiscal-canarien-entrepreneurs-internationaux/</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

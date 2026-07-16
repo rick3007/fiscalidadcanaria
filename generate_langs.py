@@ -100,6 +100,10 @@ for lang, meta in META.items():
         else:
             btn['class'] = ['lang-btn']
 
+    # Update Blog link to point to language-specific blog
+    for a in soup.find_all('a', href='/blog/'):
+        a['href'] = f'/{lang}/blog/'
+
     # Set currentLang in JS
     html_str = str(soup)
     html_str = html_str.replace("let currentLang='es';", f"let currentLang='{lang}';")
