@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTICLE_TITLE | Fiscalidad Canaria</title>
+<meta name="description" content="ARTICLE_DESC">
+<meta name="author" content="Fiscalidad Canaria — Raúl Labao">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://fiscalidadcanaria.com/blog/ARTICLE_SLUG/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://fiscalidadcanaria.com/blog/ARTICLE_SLUG/">
+<meta property="og:title" content="ARTICLE_TITLE | Fiscalidad Canaria">
+<meta property="og:description" content="ARTICLE_DESC">
+<meta property="og:site_name" content="Fiscalidad Canaria">
+<meta property="og:locale" content="es_ES">
+<script type="application/ld+json">ARTICLE_SCHEMA</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#04060d;--gold:#c9a84c;--text:#f0ede8;--muted:#6a7d9a;--border:rgba(201,168,76,0.12)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.8}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,backdrop-filter .3s;background:rgba(4,6,13,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--text);letter-spacing:1px}
+.nav-logo span{color:var(--gold)}
+.nav-back{font-size:12px;letter-spacing:1px;color:var(--muted);transition:color .3s}
+.nav-back:hover{color:var(--gold);text-decoration:none}
+.nav-cta{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:9px 20px;transition:all .3s}
+.nav-cta:hover{background:var(--gold);color:var(--bg);text-decoration:none}
+
+/* ARTICLE */
+.article-wrap{max-width:760px;margin:0 auto;padding:140px 32px 100px}
+.article-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block}
+.article-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,56px);font-weight:600;line-height:1.15;margin-bottom:24px}
+.article-meta{font-size:13px;color:var(--muted);margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+.article-body h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--text);margin:52px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.article-body h3{font-size:16px;font-weight:600;color:var(--gold);margin:32px 0 12px;letter-spacing:.5px}
+.article-body p{font-size:15px;color:#c8c4be;line-height:1.9;margin-bottom:20px;font-weight:300}
+.article-body ul,.article-body ol{margin:0 0 20px 24px}
+.article-body li{font-size:15px;color:#c8c4be;line-height:1.9;margin-bottom:8px;font-weight:300}
+.article-body strong{color:var(--text);font-weight:500}
+.highlight-box{background:rgba(201,168,76,.06);border:1px solid var(--border);border-left:3px solid var(--gold);padding:24px 28px;margin:36px 0;border-radius:2px}
+.highlight-box p{margin-bottom:0}
+.stat-inline{display:inline-block;background:rgba(201,168,76,.1);color:var(--gold);font-weight:600;padding:2px 10px;border-radius:2px;font-size:15px}
+.table-wrap{overflow-x:auto;margin:32px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{background:rgba(201,168,76,.08);color:var(--gold);padding:12px 16px;text-align:left;font-weight:500;letter-spacing:.5px;border-bottom:1px solid var(--border)}
+td{padding:12px 16px;border-bottom:1px solid rgba(201,168,76,.06);color:#c8c4be;font-weight:300}
+tr:hover td{background:rgba(201,168,76,.03)}
+
+/* CTA BOX */
+.cta-box{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.03));border:1px solid var(--border);padding:48px;margin:64px 0 0;text-align:center}
+.cta-box h3{font-family:'Cormorant Garamond',serif;font-size:28px;margin-bottom:12px}
+.cta-box p{color:var(--muted);margin-bottom:28px}
+.cta-box .btn{display:inline-block;background:var(--gold);color:var(--bg);padding:14px 36px;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;transition:opacity .3s}
+.cta-box .btn:hover{opacity:.85;text-decoration:none}
+
+/* BREADCRUMB */
+.breadcrumb{font-size:12px;color:var(--muted);margin-bottom:24px}
+.breadcrumb a{color:var(--muted)}
+.breadcrumb a:hover{color:var(--gold)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:32px 48px;text-align:center;font-size:12px;color:var(--muted)}
+
+@media(max-width:640px){nav{padding:16px 20px}.article-wrap{padding:110px 20px 64px}footer{padding:24px 20px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://fiscalidadcanaria.com" class="nav-logo">Fiscalidad<span>Canaria</span></a>
+  <a href="/blog/" class="nav-back">← Blog</a>
+  <a href="https://fiscalidadcanaria.com/#contacto" class="nav-cta">Consulta gratuita</a>
+</nav>
+
+ARTICLE_BODY
+
+<footer>
+  © 2026 Fiscalidad Canaria · <a href="https://fiscalidadcanaria.com">fiscalidadcanaria.com</a> · <a href="mailto:fiscal@alfiscocanaria.com">fiscal@alfiscocanaria.com</a>
+</footer>
+
+</body>
+</html>
