@@ -79,22 +79,14 @@ body{display:flex;align-items:center;justify-content:center;min-height:100vh;pad
   margin-bottom:20px;
 }
 .avatar{
-  width:72px;height:72px;
+  width:80px;height:80px;
   border-radius:50%;
-  border:1.5px solid var(--border);
-  background:linear-gradient(135deg,rgba(201,168,76,.2),rgba(201,168,76,.05));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-family:'Cormorant Garamond',serif;
-  font-size:28px;
-  font-weight:600;
-  color:var(--gold);
+  border:1.5px solid var(--gold);
   flex-shrink:0;
-  position:relative;
   overflow:hidden;
+  box-shadow:0 0 0 3px rgba(201,168,76,.12);
 }
-.avatar-initials{position:relative;z-index:1}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .name{
   font-family:'Cormorant Garamond',serif;
   font-size:28px;
@@ -267,7 +259,7 @@ body{display:flex;align-items:center;justify-content:center;min-height:100vh;pad
     <div class="company-badge">Fiscalidad Canaria</div>
     <div class="avatar-row">
       <div class="avatar">
-        <span class="avatar-initials">RL</span>
+        <img src="/raul/raul-labao.jpg" alt="Raúl Labao · Abogado y Economista">
       </div>
       <div>
         <div class="name">Raúl Labao</div>
