@@ -1368,6 +1368,7 @@ function rejectCookies(){
     '.fc-msg{max-width:85%;padding:9px 12px;border-radius:12px;font-size:13.5px;line-height:1.45;white-space:pre-wrap}' +
     '.fc-msg.user{align-self:flex-end;background:var(--gold,#c9a84c);color:#04060d;border-bottom-right-radius:4px}' +
     '.fc-msg.bot{align-self:flex-start;background:rgba(255,255,255,.06);color:var(--text,#f0ede8);border-bottom-left-radius:4px}' +
+    '#fc-chat-disclaimer{font-size:10.5px;line-height:1.4;color:var(--muted,#6a7d9a);padding:8px 16px 0;text-align:center}' +
     '#fc-chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border,rgba(201,168,76,.12))}' +
     '#fc-chat-input{flex:1;background:rgba(255,255,255,.05);border:1px solid var(--border,rgba(201,168,76,.12));border-radius:10px;padding:9px 12px;color:var(--text,#f0ede8);font-size:13.5px;font-family:inherit;resize:none}' +
     '#fc-chat-input:focus{outline:none;border-color:var(--gold,#c9a84c)}' +
@@ -1392,6 +1393,7 @@ function rejectCookies(){
     '<div id="fc-chat-panel">' +
       '<div id="fc-chat-head"><div id="fc-chat-head-title"><div id="fc-chat-head-icon">' + SPARK_ICON_SMALL + '</div><div><strong>Fiscalidad Canaria</strong><span>' + SPARK_ICON_SMALL.replace('fill="#04060d"', 'fill="#c9a84c"').replace('width="15" height="15"', 'width="10" height="10"') + ' Asistente IA</span></div></div><button id="fc-chat-close" aria-label="Cerrar">✕</button></div>' +
       '<div id="fc-chat-msgs"></div>' +
+      '<div id="fc-chat-disclaimer">Respuestas generadas por IA, orientativas y pueden contener errores. Para tu caso concreto, confírmalo con nuestro equipo.</div>' +
       '<form id="fc-chat-form"><textarea id="fc-chat-input" rows="1" placeholder="Escribe tu pregunta…"></textarea><button id="fc-chat-send" type="submit">Enviar</button></form>' +
     '</div>';
 
