@@ -206,7 +206,7 @@ body::before{content:'';position:fixed;inset:-50%;z-index:0;pointer-events:none;
 
 /* NAV */
 nav{position:fixed;top:0;width:100%;z-index:100;padding:22px 48px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:all .5s}
-nav.scrolled{padding:14px 48px;background:rgba(4,6,13,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+nav.scrolled{padding:14px 48px;background:rgba(4,6,13,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .logo{text-decoration:none;white-space:nowrap;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px}
 .logo-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;letter-spacing:3px;color:var(--text)}
 .logo-title span{color:var(--gold)}
@@ -1107,9 +1107,13 @@ class P{
   tick(){this.x+=this.vx;this.y+=this.vy;this.l++;if(this.l>this.ml)this.reset()}
   draw(){const p=this.l/this.ml,a=this.o*(p<.1?p*10:p>.8?(1-p)*5:1);ctx.beginPath();ctx.arc(this.x,this.y,this.s,0,Math.PI*2);ctx.fillStyle=`rgba(201,168,76,${a})`;ctx.fill()}
 }
-const particles=Array.from({length:130},()=>new P());
-function drawLines(){for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<110){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(201,168,76,${.06*(1-d/110)})`;ctx.lineWidth=.5;ctx.stroke()}}}
-(function anim(){ctx.clearRect(0,0,canvas.width,canvas.height);drawLines();particles.forEach(p=>{p.tick();p.draw()});requestAnimationFrame(anim)})();
+const particles=Array.from({length:90},()=>new P());
+function drawLines(){const maxD=110,maxD2=maxD*maxD;for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d2=dx*dx+dy*dy;if(d2<maxD2){const d=Math.sqrt(d2);ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(201,168,76,${.06*(1-d/maxD)})`;ctx.lineWidth=.5;ctx.stroke()}}}
+let heroVisible=true,animRunning=false;
+function anim(){if(!heroVisible){animRunning=false;return}ctx.clearRect(0,0,canvas.width,canvas.height);drawLines();particles.forEach(p=>{p.tick();p.draw()});requestAnimationFrame(anim)}
+function startAnim(){if(!animRunning){animRunning=true;requestAnimationFrame(anim)}}
+new IntersectionObserver(e=>{heroVisible=e[0].isIntersecting;if(heroVisible)startAnim()},{threshold:0}).observe(document.querySelector('.hero'));
+startAnim();
 
 /* ── SERVICE CARD GLOW ── */
 document.querySelectorAll('.service-card').forEach(card=>{
