@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; manifest-src 'self'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://fiscalidadcanaria-chat.vercel.app; manifest-src 'self'; form-action 'none'; base-uri 'none'">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
 <!-- SEO primario -->
@@ -1336,6 +1336,121 @@ function rejectCookies(){
   </div>
 </div>
 
+<div id="fcChatRoot"></div>
+<script>
+(function(){
+  var API_URL = "https://fiscalidadcanaria-chat.vercel.app/api/chat";
+  var root = document.getElementById('fcChatRoot');
+
+  var style = document.createElement('style');
+  style.textContent =
+    '#fc-chat-btn{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:var(--gold,#c9a84c);color:#04060d;border:none;cursor:pointer;font-size:24px;box-shadow:0 4px 16px rgba(0,0,0,.4);z-index:9999;display:flex;align-items:center;justify-content:center;transition:transform .15s ease}' +
+    '#fc-chat-btn:hover{transform:scale(1.06)}' +
+    '#fc-chat-panel{position:fixed;bottom:92px;right:24px;width:min(360px,calc(100vw - 32px));height:min(520px,calc(100vh - 140px));background:var(--bg,#04060d);border:1px solid var(--border,rgba(201,168,76,.12));border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.5);z-index:9999;display:none;flex-direction:column;overflow:hidden;font-family:inherit}' +
+    '#fc-chat-panel.open{display:flex}' +
+    '#fc-chat-head{padding:14px 16px;border-bottom:1px solid var(--border,rgba(201,168,76,.12));display:flex;justify-content:space-between;align-items:center}' +
+    '#fc-chat-head strong{color:var(--text,#f0ede8);font-size:14px}' +
+    '#fc-chat-head span{color:var(--muted,#6a7d9a);font-size:11px;display:block;margin-top:2px}' +
+    '#fc-chat-close{background:none;border:none;color:var(--muted,#6a7d9a);font-size:18px;cursor:pointer;line-height:1}' +
+    '#fc-chat-msgs{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px}' +
+    '.fc-msg{max-width:85%;padding:9px 12px;border-radius:12px;font-size:13.5px;line-height:1.45;white-space:pre-wrap}' +
+    '.fc-msg.user{align-self:flex-end;background:var(--gold,#c9a84c);color:#04060d;border-bottom-right-radius:4px}' +
+    '.fc-msg.bot{align-self:flex-start;background:rgba(255,255,255,.06);color:var(--text,#f0ede8);border-bottom-left-radius:4px}' +
+    '#fc-chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border,rgba(201,168,76,.12))}' +
+    '#fc-chat-input{flex:1;background:rgba(255,255,255,.05);border:1px solid var(--border,rgba(201,168,76,.12));border-radius:10px;padding:9px 12px;color:var(--text,#f0ede8);font-size:13.5px;font-family:inherit;resize:none}' +
+    '#fc-chat-input:focus{outline:none;border-color:var(--gold,#c9a84c)}' +
+    '#fc-chat-send{background:var(--gold,#c9a84c);color:#04060d;border:none;border-radius:10px;padding:0 16px;font-weight:600;cursor:pointer;font-size:13px}' +
+    '#fc-chat-send:disabled{opacity:.5;cursor:not-allowed}';
+  document.head.appendChild(style);
+
+  root.innerHTML =
+    '<button id="fc-chat-btn" aria-label="Abrir chat">💬</button>' +
+    '<div id="fc-chat-panel">' +
+      '<div id="fc-chat-head"><div><strong>Fiscalidad Canaria</strong><span>Primera consulta gratuita</span></div><button id="fc-chat-close" aria-label="Cerrar">✕</button></div>' +
+      '<div id="fc-chat-msgs"></div>' +
+      '<form id="fc-chat-form"><textarea id="fc-chat-input" rows="1" placeholder="Escribe tu pregunta…"></textarea><button id="fc-chat-send" type="submit">Enviar</button></form>' +
+    '</div>';
+
+  var btn = document.getElementById('fc-chat-btn');
+  var panel = document.getElementById('fc-chat-panel');
+  var msgsEl = document.getElementById('fc-chat-msgs');
+  var form = document.getElementById('fc-chat-form');
+  var input = document.getElementById('fc-chat-input');
+  var sendBtn = document.getElementById('fc-chat-send');
+
+  var history = [];
+  var opened = false;
+
+  btn.addEventListener('click', function(){
+    panel.classList.toggle('open');
+    if (!opened) {
+      opened = true;
+      addBubble('bot', '¡Hola! Soy el asistente de Fiscalidad Canaria. Pregúntame sobre ZEC, RIC, IGIC, IRPF o cualquier duda sobre el despacho.');
+    }
+  });
+  document.getElementById('fc-chat-close').addEventListener('click', function(){
+    panel.classList.remove('open');
+  });
+
+  function addBubble(role, text){
+    var div = document.createElement('div');
+    div.className = 'fc-msg ' + (role === 'user' ? 'user' : 'bot');
+    div.textContent = text;
+    msgsEl.appendChild(div);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+    return div;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    sendBtn.disabled = true;
+
+    addBubble('user', text);
+    history.push({ role: 'user', content: text });
+
+    var botDiv = addBubble('bot', '…');
+    var botText = '';
+
+    fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: history })
+    }).then(function(res){
+      if (!res.ok || !res.body) throw new Error('bad response');
+      var reader = res.body.getReader();
+      var decoder = new TextDecoder();
+      botDiv.textContent = '';
+      function read(){
+        return reader.read().then(function(r){
+          if (r.done) {
+            history.push({ role: 'assistant', content: botText });
+            sendBtn.disabled = false;
+            return;
+          }
+          botText += decoder.decode(r.value, { stream: true });
+          botDiv.textContent = botText;
+          msgsEl.scrollTop = msgsEl.scrollHeight;
+          return read();
+        });
+      }
+      return read();
+    }).catch(function(){
+      botDiv.textContent = 'Lo siento, ha habido un problema de conexión. Puedes escribirnos directamente a fiscal@alfiscocanaria.com o llamar al +34 928 381 131.';
+      sendBtn.disabled = false;
+    });
+  });
+
+  input.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
