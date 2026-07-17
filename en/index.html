@@ -699,7 +699,7 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
 <div class="team-card rv">
 <div class="team-photo">
 <!-- FOTO: sustituir src con URL real -->
-<img alt="Raúl Labao" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="https://alfiscocanaria.com/wp-content/uploads/2023/05/RAUL-CIRCULAR.png"/>
+<img alt="Raúl Labao" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="/images/team/raul-labao.png"/>
 <div class="team-photo-placeholder" style="display:none">RL</div>
 </div>
 <div class="team-name" data-i18n="team.m1.name">Raúl Labao</div>
@@ -711,8 +711,8 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
 </div>
 <div class="team-card rv d1">
 <div class="team-photo">
-<img alt="Miembro del equipo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="https://alfiscocanaria.com/wp-content/uploads/2023/05/CHICO-1-CIRCULAR.png"/>
-<div class="team-photo-placeholder" style="display:none">?</div>
+<img alt="Ramón Lasso" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="/images/team/ramon-lasso.png"/>
+<div class="team-photo-placeholder" style="display:none">Ra</div>
 </div>
 <div class="team-name" data-i18n="team.m2.name">Ramón Lasso</div>
 <div class="team-role" data-i18n="team.m2.role">Economist / Auditor</div>
@@ -720,8 +720,8 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
 </div>
 <div class="team-card rv d2">
 <div class="team-photo">
-<img alt="Economista Concursal" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="https://alfiscocanaria.com/wp-content/uploads/2023/05/CHICA-2-CIRCULAR.png"/>
-<div class="team-photo-placeholder" style="display:none">?</div>
+<img alt="Laura Morales" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="/images/team/laura-morales.png"/>
+<div class="team-photo-placeholder" style="display:none">LM</div>
 </div>
 <div class="team-name" data-i18n="team.m3.name">Laura Morales</div>
 <div class="team-role" data-i18n="team.m3.role">Economist / Insolvency</div>
@@ -729,8 +729,8 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
 </div>
 <div class="team-card rv d3">
 <div class="team-photo">
-<img alt="Miembro del equipo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="https://alfiscocanaria.com/wp-content/uploads/2023/05/CHICA-1-CIRCULAR.png"/>
-<div class="team-photo-placeholder" style="display:none">?</div>
+<img alt="Ithaisa González" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="/images/team/ithaisa-gonzalez.png"/>
+<div class="team-photo-placeholder" style="display:none">IG</div>
 </div>
 <div class="team-name" data-i18n="team.m4.name">Ithaisa González</div>
 <div class="team-role" data-i18n="team.m4.role">Economist / Tax</div>
@@ -738,8 +738,8 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
 </div>
 <div class="team-card rv d4">
 <div class="team-photo">
-<img alt="Miembro del equipo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="https://alfiscocanaria.com/wp-content/uploads/2023/05/CHICA-3-CIRCULAR.png"/>
-<div class="team-photo-placeholder" style="display:none">?</div>
+<img alt="Yankarla Beyuma" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" src="/images/team/yankarla-beyuma.png"/>
+<div class="team-photo-placeholder" style="display:none">YB</div>
 </div>
 <div class="team-name" data-i18n="team.m5.name">Yankarla Beyuma</div>
 <div class="team-role" data-i18n="team.m5.role">Administration / Accounting</div>
@@ -1129,9 +1129,11 @@ document.addEventListener('keydown',e=>{
 });
 
 /* ── COOKIE BANNER ── */
-if(!localStorage.getItem('fc_cookies')){
-  document.getElementById('cookieBanner').style.display='flex';
-}
+document.addEventListener('DOMContentLoaded', function(){
+  if(!localStorage.getItem('fc_cookies')){
+    document.getElementById('cookieBanner').style.display='flex';
+  }
+});
 function acceptCookies(){
   localStorage.setItem('fc_cookies','accepted');
   document.getElementById('cookieBanner').style.display='none';
