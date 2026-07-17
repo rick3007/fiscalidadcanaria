@@ -570,7 +570,7 @@ footer{border-top:1px solid var(--border);padding:44px 64px;display:flex;align-i
 <nav id="nav">
   <a href="#" class="logo">
   <span class="logo-title">FISCALIDAD<span>CANARIA</span></span>
-  <span class="logo-sub"><img src="https://alfiscocanaria.com/wp-content/uploads/2023/05/Alfisco_-___1_-removebg-preview-1-1.png" alt="Alfisco Canaria" class="logo-img"> Grupo Alfisco</span>
+  <span class="logo-sub"><img src="/images/logo/alfisco.png" alt="Alfisco Canaria" class="logo-img"> Grupo Alfisco</span>
 </a>
   <ul class="nav-center">
     <li><a href="#para-quien" data-i18n="nav.forwho">Para quién</a></li>
@@ -1345,17 +1345,14 @@ function rejectCookies(){
 
   var style = document.createElement('style');
   style.textContent =
-    '#fc-chat-ring{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;border:1.5px solid rgba(201,168,76,.55);z-index:9998;pointer-events:none;animation:fcPulse 2.6s ease-out infinite}' +
-    '@keyframes fcPulse{0%{transform:scale(1);opacity:.65}100%{transform:scale(1.6);opacity:0}}' +
-    '#fc-chat-btn{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:linear-gradient(145deg,#e3c979,#b8933a);border:none;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.45),0 0 0 1px rgba(201,168,76,.3);z-index:9999;display:flex;align-items:center;justify-content:center;transition:transform .2s ease,box-shadow .2s ease}' +
-    '#fc-chat-btn:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(0,0,0,.5),0 0 0 1px rgba(201,168,76,.45)}' +
-    '#fc-chat-btn:active{transform:scale(.96)}' +
-    '#fc-chat-btn svg{display:block}' +
-    '#fc-chat-intro{position:fixed;bottom:94px;right:24px;max-width:225px;background:var(--bg,#04060d);border:1px solid rgba(201,168,76,.3);border-radius:14px;padding:12px 30px 12px 14px;color:var(--text,#f0ede8);font-size:12.5px;line-height:1.45;box-shadow:0 10px 30px rgba(0,0,0,.45);z-index:9999;opacity:0;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease;pointer-events:none}' +
-    '#fc-chat-intro.show{opacity:1;transform:translateY(0);pointer-events:auto}' +
-    '#fc-chat-intro b{color:var(--gold,#c9a84c);font-weight:600}' +
-    '#fc-chat-intro-close{position:absolute;top:6px;right:8px;background:none;border:none;color:var(--muted,#6a7d9a);font-size:13px;cursor:pointer;line-height:1;padding:2px}' +
-    '#fc-chat-panel{position:fixed;bottom:92px;right:24px;width:min(360px,calc(100vw - 32px));height:min(520px,calc(100vh - 140px));background:var(--bg,#04060d);border:1px solid var(--border,rgba(201,168,76,.12));border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.5);z-index:9999;display:none;flex-direction:column;overflow:hidden;font-family:inherit}' +
+    '#fc-chat-btn{position:fixed;bottom:24px;right:24px;height:56px;padding:0 20px 0 14px;border-radius:28px;background:linear-gradient(145deg,#e3c979,#b8933a);border:none;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.45),0 0 0 1px rgba(201,168,76,.3),0 0 0 5px rgba(201,168,76,.12);z-index:9999;display:flex;align-items:center;gap:9px;transition:transform .2s ease,box-shadow .2s ease;animation:fcGlow 3s ease-in-out infinite}' +
+    '@keyframes fcGlow{0%,100%{box-shadow:0 6px 22px rgba(0,0,0,.45),0 0 0 1px rgba(201,168,76,.3),0 0 0 5px rgba(201,168,76,.12)}50%{box-shadow:0 6px 26px rgba(0,0,0,.5),0 0 0 1px rgba(201,168,76,.45),0 0 0 9px rgba(201,168,76,.03)}}' +
+    '#fc-chat-btn:hover{transform:scale(1.05);box-shadow:0 8px 28px rgba(0,0,0,.5),0 0 0 1px rgba(201,168,76,.5),0 0 0 6px rgba(201,168,76,.16)}' +
+    '#fc-chat-btn:active{transform:scale(.97)}' +
+    '#fc-chat-btn svg{display:block;flex-shrink:0}' +
+    '#fc-chat-btn-label{color:#04060d;font-family:"Inter",sans-serif;font-weight:700;font-size:13.5px;white-space:nowrap;line-height:1.2;text-align:left}' +
+    '#fc-chat-btn-label small{display:block;font-weight:600;font-size:9px;letter-spacing:.08em;opacity:.72}' +
+    '#fc-chat-panel{position:fixed;bottom:88px;right:24px;width:min(360px,calc(100vw - 32px));height:min(520px,calc(100vh - 140px));background:var(--bg,#04060d);border:1px solid var(--border,rgba(201,168,76,.12));border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.5);z-index:9999;display:none;flex-direction:column;overflow:hidden;font-family:inherit}' +
     '#fc-chat-panel.open{display:flex}' +
     '#fc-chat-head{padding:14px 16px;border-bottom:1px solid var(--border,rgba(201,168,76,.12));display:flex;justify-content:space-between;align-items:center}' +
     '#fc-chat-head-title{display:flex;align-items:center;gap:9px}' +
@@ -1385,9 +1382,9 @@ function rejectCookies(){
     '</svg>';
 
   root.innerHTML =
-    '<div id="fc-chat-ring"></div>' +
-    '<div id="fc-chat-intro"><button id="fc-chat-intro-close" aria-label="Cerrar aviso">✕</button>' + SPARK_ICON_SMALL.replace('fill="#04060d"', 'fill="#c9a84c"') + ' <b>Asistente IA</b> · ¿Dudas sobre ZEC, RIC o IGIC? Pregúntame, respondo al instante.</div>' +
-    '<button id="fc-chat-btn" aria-label="Abrir asistente IA de Fiscalidad Canaria">' + SPARK_ICON + '</button>' +
+    '<button id="fc-chat-btn" aria-label="Abrir asistente IA de Fiscalidad Canaria">' + SPARK_ICON +
+      '<span id="fc-chat-btn-label"><small>ASISTENTE IA</small>Pregúntame</span>' +
+    '</button>' +
     '<div id="fc-chat-panel">' +
       '<div id="fc-chat-head"><div id="fc-chat-head-title"><div id="fc-chat-head-icon">' + SPARK_ICON_SMALL + '</div><div><strong>Fiscalidad Canaria</strong><span>' + SPARK_ICON_SMALL.replace('fill="#04060d"', 'fill="#c9a84c"').replace('width="15" height="15"', 'width="10" height="10"') + ' Asistente IA</span></div></div><button id="fc-chat-close" aria-label="Cerrar">✕</button></div>' +
       '<div id="fc-chat-msgs"></div>' +
@@ -1400,28 +1397,11 @@ function rejectCookies(){
   var form = document.getElementById('fc-chat-form');
   var input = document.getElementById('fc-chat-input');
   var sendBtn = document.getElementById('fc-chat-send');
-  var intro = document.getElementById('fc-chat-intro');
-  var ring = document.getElementById('fc-chat-ring');
 
   var history = [];
   var opened = false;
 
-  function hideIntro(){
-    intro.classList.remove('show');
-  }
-
-  if (!localStorage.getItem('fcChatIntroSeen')) {
-    setTimeout(function(){
-      intro.classList.add('show');
-      localStorage.setItem('fcChatIntroSeen', '1');
-      setTimeout(hideIntro, 9000);
-    }, 2500);
-  }
-  document.getElementById('fc-chat-intro-close').addEventListener('click', hideIntro);
-
   btn.addEventListener('click', function(){
-    hideIntro();
-    ring.style.display = 'none';
     panel.classList.toggle('open');
     if (!opened) {
       opened = true;
