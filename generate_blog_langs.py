@@ -471,6 +471,10 @@ def make_blog_index(lang, data):
 <html lang="{lang}">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>{data['blog_title']}</title>
 <meta name="description" content="{data['blog_desc']}">
 <meta name="robots" content="index, follow">
@@ -537,6 +541,10 @@ def make_article(lang, data, article):
 <html lang="{lang}">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>{article['title']} | Fiscalidad Canaria</title>
 <meta name="description" content="{article['desc']}">
 <meta name="keywords" content="{article['keywords']}">

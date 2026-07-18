@@ -63,6 +63,13 @@ for lang, meta in META.items():
     if canonical:
         canonical['href'] = f'https://fiscalidadcanaria.com/{lang}/'
 
+    # Update hreflang alternates (each must point to its own language path)
+    hreflang_paths = {'es': '', 'en': 'en/', 'de': 'de/', 'it': 'it/', 'fr': 'fr/', 'x-default': ''}
+    for tag in soup.find_all('link', attrs={'rel': 'alternate', 'hreflang': True}):
+        path = hreflang_paths.get(tag['hreflang'])
+        if path is not None:
+            tag['href'] = f'https://fiscalidadcanaria.com/{path}'
+
     # Update og tags
     og_title = soup.find('meta', attrs={'property': 'og:title'})
     if og_title:

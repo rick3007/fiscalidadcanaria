@@ -4,8 +4,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; manifest-src 'self'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; manifest-src 'self'; form-action 'none'; base-uri 'none'">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <!-- SEO primario -->
 <title>Conseil Fiscal Îles Canaries | Fiscalidad Canaria</title>
 <meta content="Spécialistes du régime fiscal des Canaries : ZEC (4% IS), RIC, IGIC. Première consultation gratuite à Las Palmas de Gran Canaria." name="description"/>
@@ -15,10 +21,10 @@
 <link href="https://fiscalidadcanaria.com/fr/" rel="canonical"/>
 <!-- Hreflang -->
 <link href="https://fiscalidadcanaria.com/" hreflang="es" rel="alternate"/>
-<link href="https://fiscalidadcanaria.com/" hreflang="en" rel="alternate"/>
-<link href="https://fiscalidadcanaria.com/" hreflang="de" rel="alternate"/>
-<link href="https://fiscalidadcanaria.com/" hreflang="it" rel="alternate"/>
-<link href="https://fiscalidadcanaria.com/" hreflang="fr" rel="alternate"/>
+<link href="https://fiscalidadcanaria.com/en/" hreflang="en" rel="alternate"/>
+<link href="https://fiscalidadcanaria.com/de/" hreflang="de" rel="alternate"/>
+<link href="https://fiscalidadcanaria.com/it/" hreflang="it" rel="alternate"/>
+<link href="https://fiscalidadcanaria.com/fr/" hreflang="fr" rel="alternate"/>
 <link href="https://fiscalidadcanaria.com/" hreflang="x-default" rel="alternate"/>
 <!-- Open Graph -->
 <meta content="website" property="og:type"/>
@@ -1136,21 +1142,39 @@ document.addEventListener('keydown',e=>{
 document.addEventListener('DOMContentLoaded', function(){
   if(!localStorage.getItem('fc_cookies')){
     document.getElementById('cookieBanner').style.display='flex';
+  } else if(localStorage.getItem('fc_cookies')==='accepted'){
+    loadAnalytics();
   }
 });
 function acceptCookies(){
   localStorage.setItem('fc_cookies','accepted');
   document.getElementById('cookieBanner').style.display='none';
+  loadAnalytics();
 }
 function rejectCookies(){
   localStorage.setItem('fc_cookies','rejected');
   document.getElementById('cookieBanner').style.display='none';
 }
+
+/* GOOGLE ANALYTICS 4 (solo se carga tras consentimiento) */
+var GA_MEASUREMENT_ID = 'G-VL6MKKFY4M';
+function loadAnalytics(){
+  if(window.__gaLoaded) return;
+  window.__gaLoaded = true;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
+}
 </script>
 <!-- ── COOKIE BANNER ── -->
 <div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9000;background:rgba(6,8,15,0.97);border-top:1px solid rgba(201,168,76,0.2);padding:20px 40px;display:none;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;backdrop-filter:blur(16px)">
 <p style="font-size:13px;color:#7a8ba8;line-height:1.6;max-width:700px;margin:0">
-    Utilizamos cookies técnicas necesarias para el funcionamiento del sitio web. Puedes consultar nuestra
+    Utilizamos cookies técnicas necesarias para el funcionamiento del sitio web y, si lo aceptas, cookies analíticas (Google Analytics) para conocer cómo se usa. Puedes consultar nuestra
     <a href="#" onclick="openLegal('modalCookies');return false" style="color:var(--gold);text-decoration:underline">Política de Cookies</a> y
     <a href="#" onclick="openLegal('modalPrivacidad');return false" style="color:var(--gold);text-decoration:underline">Política de Privacidad</a>.
   </p>
@@ -1216,7 +1240,7 @@ function rejectCookies(){
 <li><strong>Email:</strong> fiscal@alfiscocanaria.com</li>
 </ul>
 <h2>2. Datos que recabamos</h2>
-<p>A través de nuestros canales de contacto (email y teléfono) podemos recabar: nombre, empresa, correo electrónico, teléfono y la información que voluntariamente nos facilite. No recabamos datos especialmente protegidos. Este sitio web no dispone de formulario de contacto ni recaba datos de forma automatizada.</p>
+<p>A través de nuestros canales de contacto (email y teléfono) podemos recabar: nombre, empresa, correo electrónico, teléfono y la información que voluntariamente nos facilite. No recabamos datos especialmente protegidos. Este sitio web no dispone de formulario de contacto. Con su consentimiento previo (banner de cookies), el sitio recaba de forma automatizada datos estadísticos de navegación (páginas visitadas, duración de la sesión, dispositivo, IP anonimizada) mediante Google Analytics 4. Véase la Política de Cookies para más información.</p>
 <h2>3. Finalidad y base jurídica</h2>
 <ul>
 <li><strong>Gestión de consultas:</strong> atender y responder las solicitudes recibidas. Base jurídica: consentimiento del interesado (art. 6.1.a RGPD).</li>
@@ -1226,7 +1250,7 @@ function rejectCookies(){
 <h2>4. Conservación de los datos</h2>
 <p>Los datos se conservarán durante el tiempo necesario para atender su consulta y, en caso de relación contractual, durante los plazos establecidos por la normativa aplicable (fiscal: 5 años; mercantil: 6 años).</p>
 <h2>5. Destinatarios</h2>
-<p>No se cederán datos a terceros salvo obligación legal. No se realizan transferencias internacionales de datos.</p>
+<p>Sus datos no se ceden a terceros salvo obligación legal. Utilizamos Google Analytics 4 (Google Ireland Limited) como encargado del tratamiento para la medición estadística del sitio web, únicamente si usted ha dado su consentimiento a las cookies analíticas. Esto puede implicar una transferencia internacional de datos a EE. UU., amparada por las Cláusulas Contractuales Tipo de la Comisión Europea. Más información en la Política de Cookies.</p>
 <h2>6. Sus derechos</h2>
 <p>En virtud del RGPD, puede ejercer los siguientes derechos dirigiéndose a <strong>fiscal@alfiscocanaria.com</strong>:</p>
 <ul>
@@ -1251,11 +1275,15 @@ function rejectCookies(){
 <h2>1. ¿Qué son las cookies?</h2>
 <p>Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita un sitio web. Permiten que el sitio recuerde sus preferencias y mejore su experiencia de navegación.</p>
 <h2>2. Cookies que utilizamos</h2>
-<p>Este sitio web utiliza <strong>únicamente cookies técnicas o estrictamente necesarias</strong>, que no requieren consentimiento previo conforme al art. 22.2 de la LSSI-CE:</p>
+<p><strong>Cookies técnicas o necesarias</strong> (no requieren consentimiento previo conforme al art. 22.2 de la LSSI-CE):</p>
 <ul>
 <li><strong>fc_cookies:</strong> almacena su preferencia sobre el aviso de cookies. Duración: 1 año. Titular: ALFISCO CANARIA, S.L.</li>
 </ul>
-<p>No utilizamos cookies de análisis, publicidad ni redes sociales.</p>
+<p><strong>Cookies analíticas</strong> (requieren su consentimiento previo; solo se instalan si pulsa "Aceptar" en el banner):</p>
+<ul>
+<li><strong>_ga, _ga_*:</strong> Google Analytics 4 (Google Ireland Limited), usadas para medir el tráfico y uso del sitio de forma agregada, con la IP anonimizada. Duración: hasta 2 años. Más información en la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">política de privacidad de Google</a>.</li>
+</ul>
+<p>No utilizamos cookies de publicidad ni de redes sociales.</p>
 <h2>3. Cómo gestionar las cookies</h2>
 <p>Puede configurar su navegador para bloquear o eliminar cookies. Tenga en cuenta que deshabilitar las cookies técnicas puede afectar al funcionamiento del sitio:</p>
 <ul>
