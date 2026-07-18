@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; manifest-src 'self'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; manifest-src 'self'; form-action 'none'; base-uri 'none'">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
 <!-- Favicon -->
@@ -123,5 +123,48 @@ footer{border-top:1px solid var(--border);padding:32px 48px;text-align:center;fo
 <footer>
   © 2026 Fiscalidad Canaria · <a href="https://fiscalidadcanaria.com" style="color:var(--muted)">fiscalidadcanaria.com</a> · <a href="mailto:fiscal@alfiscocanaria.com" style="color:var(--muted)">fiscal@alfiscocanaria.com</a>
 </footer>
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9000;background:rgba(6,8,15,0.97);border-top:1px solid rgba(201,168,76,0.2);padding:20px 40px;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;backdrop-filter:blur(16px)">
+  <p style="font-size:13px;color:#7a8ba8;line-height:1.6;max-width:700px;margin:0">
+    Utilizamos cookies técnicas necesarias para el funcionamiento del sitio web y, si lo aceptas, cookies analíticas (Google Analytics) para conocer cómo se usa. Puedes consultar nuestra
+    <a href="https://fiscalidadcanaria.com/#modalCookies" style="color:var(--gold);text-decoration:underline">Política de Cookies</a> y
+    <a href="https://fiscalidadcanaria.com/#modalPrivacidad" style="color:var(--gold);text-decoration:underline">Política de Privacidad</a>.
+  </p>
+  <div style="display:flex;gap:12px;flex-shrink:0">
+    <button onclick="rejectCookies()" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;background:transparent;color:#7a8ba8;border:1px solid rgba(255,255,255,0.1);cursor:pointer;font-family:'Inter',sans-serif;transition:all .3s">Solo necesarias</button>
+    <button onclick="acceptCookies()" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:10px 24px;background:var(--gold);color:#04060d;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600">Aceptar</button>
+  </div>
+</div>
+<script>
+var GA_MEASUREMENT_ID = 'G-VL6MKKFY4M';
+function loadAnalytics(){
+  if(window.__gaLoaded) return;
+  window.__gaLoaded = true;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
+}
+function acceptCookies(){
+  localStorage.setItem('fc_cookies','accepted');
+  document.getElementById('cookieBanner').style.display='none';
+  loadAnalytics();
+}
+function rejectCookies(){
+  localStorage.setItem('fc_cookies','rejected');
+  document.getElementById('cookieBanner').style.display='none';
+}
+document.addEventListener('DOMContentLoaded', function(){
+  if(!localStorage.getItem('fc_cookies')){
+    document.getElementById('cookieBanner').style.display='flex';
+  } else if(localStorage.getItem('fc_cookies')==='accepted'){
+    loadAnalytics();
+  }
+});
+</script>
+
 </body>
 </html>

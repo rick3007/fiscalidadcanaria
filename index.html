@@ -1191,6 +1191,12 @@ document.querySelectorAll('.legal-overlay').forEach(el=>{
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape') document.querySelectorAll('.legal-overlay.open').forEach(el=>closeLegal(el.id));
 });
+(function(){
+  var hashId = location.hash.slice(1);
+  if(['modalAvisoLegal','modalPrivacidad','modalCookies'].includes(hashId)){
+    document.addEventListener('DOMContentLoaded', function(){ openLegal(hashId); });
+  }
+})();
 
 /* ── COOKIE BANNER ── */
 document.addEventListener('DOMContentLoaded', function(){
