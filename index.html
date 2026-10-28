@@ -1300,7 +1300,7 @@ function loadAnalytics(){
   <div class="legal-box">
     <button class="legal-close" onclick="closeLegal('modalPrivacidad')" aria-label="Cerrar">✕</button>
     <h2>Política de Privacidad</h2>
-    <p class="legal-meta">Última actualización: julio 2026 · RGPD (UE) 2016/679 · LOPDGDD 3/2018</p>
+    <p class="legal-meta">Última actualización: octubre 2026 · RGPD (UE) 2016/679 · LOPDGDD 3/2018</p>
 
     <h2>1. Responsable del tratamiento</h2>
     <ul>
@@ -1311,11 +1311,12 @@ function loadAnalytics(){
     </ul>
 
     <h2>2. Datos que recabamos</h2>
-    <p>A través de nuestros canales de contacto (email y teléfono) podemos recabar: nombre, empresa, correo electrónico, teléfono y la información que voluntariamente nos facilite. No recabamos datos especialmente protegidos. Este sitio web no dispone de formulario de contacto. Con su consentimiento previo (banner de cookies), el sitio recaba de forma automatizada datos estadísticos de navegación (páginas visitadas, duración de la sesión, dispositivo, IP anonimizada) mediante Google Analytics 4. Véase la Política de Cookies para más información.</p>
+    <p>A través de nuestros canales de contacto (email y teléfono) podemos recabar: nombre, empresa, correo electrónico, teléfono y la información que voluntariamente nos facilite. No recabamos datos especialmente protegidos. Este sitio web no dispone de formulario de contacto, pero sí de un asistente virtual basado en inteligencia artificial, a través del cual se tratan los mensajes que usted escriba voluntariamente (véase el apartado 5 bis). Con su consentimiento previo (banner de cookies), el sitio recaba de forma automatizada datos estadísticos de navegación (páginas visitadas, duración de la sesión, dispositivo, IP anonimizada) mediante Google Analytics 4. Véase la Política de Cookies para más información.</p>
 
     <h2>3. Finalidad y base jurídica</h2>
     <ul>
       <li><strong>Gestión de consultas:</strong> atender y responder las solicitudes recibidas. Base jurídica: consentimiento del interesado (art. 6.1.a RGPD).</li>
+      <li><strong>Asistente virtual (chat con IA):</strong> responder de forma automatizada a consultas generales sobre el despacho y la fiscalidad canaria. Base jurídica: consentimiento del interesado, que presta al enviar un mensaje tras haber sido informado (art. 6.1.a RGPD).</li>
       <li><strong>Relación contractual:</strong> en caso de contratación de servicios. Base jurídica: ejecución de contrato (art. 6.1.b RGPD).</li>
       <li><strong>Obligaciones legales:</strong> cumplimiento de obligaciones fiscales y mercantiles. Base jurídica: obligación legal (art. 6.1.c RGPD).</li>
     </ul>
@@ -1325,6 +1326,17 @@ function loadAnalytics(){
 
     <h2>5. Destinatarios</h2>
     <p>Sus datos no se ceden a terceros salvo obligación legal. Utilizamos Google Analytics 4 (Google Ireland Limited) como encargado del tratamiento para la medición estadística del sitio web, únicamente si usted ha dado su consentimiento a las cookies analíticas. Esto puede implicar una transferencia internacional de datos a EE. UU., amparada por las Cláusulas Contractuales Tipo de la Comisión Europea. Más información en la Política de Cookies.</p>
+
+    <h2>5 bis. Asistente virtual (chat con inteligencia artificial)</h2>
+    <ul>
+      <li><strong>Finalidad:</strong> responder de forma automatizada a consultas generales sobre los servicios del despacho y la fiscalidad canaria. Las respuestas las genera un sistema de inteligencia artificial, son orientativas y no constituyen asesoramiento profesional.</li>
+      <li><strong>Base jurídica:</strong> su consentimiento, que presta al enviar un mensaje después de haber sido informado en la propia ventana del chat (art. 6.1.a RGPD). Puede retirarlo en cualquier momento dejando de utilizar el chat y solicitando la supresión de sus datos.</li>
+      <li><strong>Datos tratados:</strong> el contenido de los mensajes que usted escriba y los datos técnicos necesarios para la comunicación, como la dirección IP, que se utiliza para limitar el uso abusivo del servicio.</li>
+      <li><strong>Encargados del tratamiento:</strong> Anthropic Ireland, Limited, proveedor del modelo de inteligencia artificial, y Vercel Inc., proveedor del alojamiento del servicio. Anthropic no utiliza el contenido de las conversaciones para entrenar sus modelos.</li>
+      <li><strong>Transferencias internacionales:</strong> los mensajes se procesan en Estados Unidos. Las transferencias están amparadas por las cláusulas contractuales tipo aprobadas por la Comisión Europea (art. 46.2.c RGPD), incorporadas en los acuerdos de encargo de ambos proveedores; Vercel Inc. declara, además, su adhesión al Marco de Privacidad de Datos UE-EE. UU. Puede solicitar información sobre estas garantías en <strong>fiscal@alfiscocanaria.com</strong>.</li>
+      <li><strong>Conservación:</strong> el despacho no almacena el contenido de las conversaciones; el historial solo se mantiene en su navegador mientras la página está abierta. Los proveedores pueden conservarlo durante el tiempo previsto en sus acuerdos de encargo.</li>
+      <li><strong>Recomendación:</strong> no introduzca en el chat datos especialmente protegidos, datos identificativos de terceros ni documentación de su caso. Para una consulta concreta, contacte con el equipo por teléfono o correo electrónico.</li>
+    </ul>
 
     <h2>6. Sus derechos</h2>
     <p>En virtud del RGPD, puede ejercer los siguientes derechos dirigiéndose a <strong>fiscal@alfiscocanaria.com</strong>:</p>
@@ -1409,6 +1421,7 @@ function loadAnalytics(){
     '.fc-msg.user{align-self:flex-end;background:var(--gold,#c9a84c);color:#04060d;border-bottom-right-radius:4px}' +
     '.fc-msg.bot{align-self:flex-start;background:rgba(255,255,255,.06);color:var(--text,#f0ede8);border-bottom-left-radius:4px}' +
     '#fc-chat-disclaimer{font-size:10.5px;line-height:1.4;color:var(--muted,#6a7d9a);padding:8px 16px 0;text-align:center}' +
+    '#fc-chat-disclaimer a{color:var(--gold,#c9a84c);text-decoration:underline}' +
     '#fc-chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border,rgba(201,168,76,.12))}' +
     '#fc-chat-input{flex:1;background:rgba(255,255,255,.05);border:1px solid var(--border,rgba(201,168,76,.12));border-radius:10px;padding:9px 12px;color:var(--text,#f0ede8);font-size:13.5px;font-family:inherit;resize:none}' +
     '#fc-chat-input:focus{outline:none;border-color:var(--gold,#c9a84c)}' +
@@ -1433,7 +1446,7 @@ function loadAnalytics(){
     '<div id="fc-chat-panel">' +
       '<div id="fc-chat-head"><div id="fc-chat-head-title"><div id="fc-chat-head-icon">' + SPARK_ICON_SMALL + '</div><div><strong>Fiscalidad Canaria</strong><span>' + SPARK_ICON_SMALL.replace('fill="#04060d"', 'fill="#c9a84c"').replace('width="15" height="15"', 'width="10" height="10"') + ' Asistente IA</span></div></div><button id="fc-chat-close" aria-label="Cerrar">✕</button></div>' +
       '<div id="fc-chat-msgs"></div>' +
-      '<div id="fc-chat-disclaimer">Respuestas generadas por IA, orientativas y pueden contener errores. Para tu caso concreto, confírmalo con nuestro equipo.</div>' +
+      '<div id="fc-chat-disclaimer">Respuestas generadas por IA, orientativas y pueden contener errores. Para tu caso concreto, confírmalo con nuestro equipo. No incluyas datos sensibles: al enviar un mensaje consientes su tratamiento por nuestros proveedores (Anthropic y Vercel), con transferencia a EE. UU. <a href="#" id="fc-chat-privacy">Política de privacidad</a></div>' +
       '<form id="fc-chat-form"><textarea id="fc-chat-input" rows="1" placeholder="Escribe tu pregunta…"></textarea><button id="fc-chat-send" type="submit">Enviar</button></form>' +
     '</div>';
 
@@ -1456,6 +1469,12 @@ function loadAnalytics(){
   });
   document.getElementById('fc-chat-close').addEventListener('click', function(){
     panel.classList.remove('open');
+  });
+  // The legal modal sits below the chat panel, so close the panel before opening it
+  document.getElementById('fc-chat-privacy').addEventListener('click', function(e){
+    e.preventDefault();
+    panel.classList.remove('open');
+    openLegal('modalPrivacidad');
   });
 
   function addBubble(role, text){
