@@ -655,4 +655,8 @@ for lang, data in LANGS.items():
             f.write(make_article(lang, data, article))
         print(f'  ✓ {art_dir}/index.html')
 
+# Re-insert hreflang alternates (ES pages are maintained by hand)
+import add_hreflang
+add_hreflang.main()
+
 print('\nDone.')
