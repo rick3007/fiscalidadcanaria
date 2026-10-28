@@ -1424,6 +1424,12 @@ body.legal-open #fc-chat-btn,body.legal-open #fc-chat-panel{display:none}
     '.fc-msg.user{align-self:flex-end;background:var(--gold,#c9a84c);color:#04060d;border-bottom-right-radius:4px}' +
     '.fc-msg.bot{align-self:flex-start;background:rgba(255,255,255,.06);color:var(--text,#f0ede8);border-bottom-left-radius:4px}' +
     '.fc-msg.bot a{color:var(--gold,#c9a84c);text-decoration:underline;word-break:break-all}' +
+    '.fc-wait{display:inline-flex;align-items:center;gap:8px;color:var(--muted,#9aa8bf);font-style:italic}' +
+    '.fc-dots{display:inline-flex;gap:4px}' +
+    '.fc-dots i{width:6px;height:6px;border-radius:50%;background:var(--gold,#c9a84c);animation:fcDot 1.2s infinite ease-in-out}' +
+    '.fc-dots i:nth-child(2){animation-delay:.15s}.fc-dots i:nth-child(3){animation-delay:.3s}' +
+    '@keyframes fcDot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-4px)}}' +
+    '@media (prefers-reduced-motion:reduce){.fc-dots i{animation:none;opacity:.7}}' +
     '#fc-chat-disclaimer{font-size:10.5px;line-height:1.4;color:var(--muted,#6a7d9a);padding:8px 16px 0;text-align:center}' +
     '#fc-chat-disclaimer a{color:var(--gold,#c9a84c);text-decoration:underline}' +
     '#fc-chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border,rgba(201,168,76,.12))}' +
@@ -1509,6 +1515,16 @@ body.legal-open #fc-chat-btn,body.legal-open #fc-chat-panel{display:none}
     el.appendChild(document.createTextNode(text.slice(last)));
   }
 
+  // Animated "working" indicator shown until the first words of the answer arrive
+  function showWaiting(el, label){
+    el.textContent = '';
+    var wrap = document.createElement('span'); wrap.className = 'fc-wait';
+    var dots = document.createElement('span'); dots.className = 'fc-dots';
+    for (var i = 0; i < 3; i++) dots.appendChild(document.createElement('i'));
+    var txt = document.createElement('span'); txt.textContent = label;
+    wrap.appendChild(dots); wrap.appendChild(txt); el.appendChild(wrap);
+  }
+
   function addBubble(role, text){
     var div = document.createElement('div');
     div.className = 'fc-msg ' + (role === 'user' ? 'user' : 'bot');
@@ -1528,8 +1544,19 @@ body.legal-open #fc-chat-btn,body.legal-open #fc-chat-panel{display:none}
     addBubble('user', text);
     history.push({ role: 'user', content: text });
 
-    var botDiv = addBubble('bot', '…');
+    var botDiv = addBubble('bot', '');
+    var waitLabel = 'Pensando';
+    showWaiting(botDiv, waitLabel);
+    var lastActivity = Date.now();
+    // Reassure the user if nothing new has arrived for a while
+    var waitTimer = setInterval(function(){
+      if (botText || Date.now() - lastActivity < 8000) return;
+      waitLabel = 'Preparando la respuesta';
+      showWaiting(botDiv, waitLabel);
+      lastActivity = Date.now();
+    }, 1000);
     var botText = '';
+    var rawText = '';
 
     fetch(API_URL, {
       method: 'POST',
@@ -1539,22 +1566,35 @@ body.legal-open #fc-chat-btn,body.legal-open #fc-chat-panel{display:none}
       if (!res.ok || !res.body) throw new Error('bad response');
       var reader = res.body.getReader();
       var decoder = new TextDecoder();
-      botDiv.textContent = '';
       function read(){
         return reader.read().then(function(r){
           if (r.done) {
+            clearInterval(waitTimer);
             history.push({ role: 'assistant', content: botText });
             sendBtn.disabled = false;
             return;
           }
-          botText += decoder.decode(r.value, { stream: true });
-          renderText(botDiv, botText);
+          rawText += decoder.decode(r.value, { stream: true });
+          // The server frames progress notes as \u0001note\u0002; show the latest one
+          // until the answer starts, and keep them out of the reply and the history
+          var status = '';
+          botText = rawText.replace(/\u0001([^\u0002]*)\u0002/g, function(_, note){ status = note; return ''; });
+          var open = botText.indexOf('\u0001');
+          if (open >= 0) botText = botText.slice(0, open);
+          botText = botText.replace(/^\s+/, '');
+          if (botText) {
+            renderText(botDiv, botText);
+          } else if (status) {
+            var label = status.replace(/^🔎\s*/, '').replace(/…$/, '');
+            if (label !== waitLabel) { waitLabel = label; showWaiting(botDiv, label); lastActivity = Date.now(); }
+          }
           msgsEl.scrollTop = msgsEl.scrollHeight;
           return read();
         });
       }
       return read();
     }).catch(function(){
+      clearInterval(waitTimer);
       botDiv.textContent = 'Lo siento, ha habido un problema de conexión. Puedes escribirnos directamente a fiscal@alfiscocanaria.com o llamar al +34 928 381 131.';
       sendBtn.disabled = false;
     });
