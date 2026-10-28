@@ -1409,7 +1409,13 @@ body.legal-open #fc-chat-btn,body.legal-open #fc-chat-panel{display:none}
     '#fc-chat-btn:hover{transform:scale(1.05);box-shadow:0 8px 28px rgba(0,0,0,.5),0 0 0 1px rgba(201,168,76,.5),0 0 0 6px rgba(201,168,76,.16)}' +
     '#fc-chat-btn:active{transform:scale(.97)}' +
     '#fc-chat-btn svg{display:block;flex-shrink:0}' +
-    '#fc-chat-btn .fc-av{width:40px;height:40px;border-radius:50%;display:block;flex-shrink:0;box-shadow:0 0 0 2px rgba(255,255,255,.55)}' +
+    '#fc-chat-btn .fc-av{width:40px;height:40px;border-radius:50%;display:block;box-shadow:0 0 0 2px rgba(255,255,255,.55)}' +
+    '#fc-chat-btn .fc-av-wrap{position:relative;flex-shrink:0;animation:fcBob 3.2s ease-in-out infinite}' +
+    '#fc-chat-btn .fc-online{position:absolute;right:-1px;bottom:1px;width:11px;height:11px;border-radius:50%;background:#2ecc71;box-shadow:0 0 0 2px #e3c979}' +
+    '#fc-chat-btn .fc-online::after{content:"";position:absolute;inset:0;border-radius:50%;background:#2ecc71;animation:fcPulse 2s ease-out infinite}' +
+    '@keyframes fcBob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-3px) rotate(-4deg)}}' +
+    '@keyframes fcPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.4);opacity:0}}' +
+    '@media (prefers-reduced-motion:reduce){#fc-chat-btn .fc-av-wrap,#fc-chat-btn .fc-online::after{animation:none}}' +
     '#fc-chat-btn-label{color:#04060d;font-family:"Inter",sans-serif;font-weight:700;font-size:13.5px;white-space:nowrap;line-height:1.2;text-align:left}' +
     '#fc-chat-btn-label small{display:block;font-weight:600;font-size:9px;letter-spacing:.08em;opacity:.72}' +
     '#fc-chat-panel{position:fixed;bottom:88px;right:24px;width:min(360px,calc(100vw - 32px));height:min(520px,calc(100vh - 140px));background:var(--bg,#04060d);border:1px solid var(--border,rgba(201,168,76,.12));border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.5);z-index:9999;display:none;flex-direction:column;overflow:hidden;font-family:inherit}' +
@@ -1446,14 +1452,14 @@ body.legal-open #fc-chat-btn,body.legal-open #fc-chat-panel{display:none}
       '<path d="M12 2.5 L14.1 9.7 L21.5 12 L14.1 14.3 L12 21.5 L9.9 14.3 L2.5 12 L9.9 9.7 Z" fill="#04060d"/>' +
     '</svg>';
 
-  var AVATAR = '<img class="fc-av" src="/images/assistant-avatar.svg" alt="" width="40" height="40">';
+  var AVATAR = '<span class="fc-av-wrap"><img class="fc-av" src="/images/assistant-avatar-animated.svg" alt="" width="40" height="40"><span class="fc-online"></span></span>';
 
   root.innerHTML =
     '<button id="fc-chat-btn" aria-label="Abrir asistente IA de Fiscalidad Canaria">' + AVATAR +
       '<span id="fc-chat-btn-label"><small>ASISTENTE IA</small>Pregúntame</span>' +
     '</button>' +
     '<div id="fc-chat-panel">' +
-      '<div id="fc-chat-head"><div id="fc-chat-head-title"><div id="fc-chat-head-icon"><img src="/images/assistant-avatar.svg" alt="" width="36" height="36"></div><div><strong>Fiscalidad Canaria</strong><span>' + SPARK_ICON_SMALL.replace('fill="#04060d"', 'fill="#c9a84c"').replace('width="15" height="15"', 'width="10" height="10"') + ' Asistente IA</span></div></div><button id="fc-chat-close" aria-label="Cerrar">✕</button></div>' +
+      '<div id="fc-chat-head"><div id="fc-chat-head-title"><div id="fc-chat-head-icon"><img src="/images/assistant-avatar-animated.svg" alt="" width="36" height="36"></div><div><strong>Fiscalidad Canaria</strong><span>' + SPARK_ICON_SMALL.replace('fill="#04060d"', 'fill="#c9a84c"').replace('width="15" height="15"', 'width="10" height="10"') + ' Asistente IA</span></div></div><button id="fc-chat-close" aria-label="Cerrar">✕</button></div>' +
       '<div id="fc-chat-msgs"></div>' +
       '<div id="fc-chat-disclaimer">Respuestas generadas por IA, orientativas y pueden contener errores. Para tu caso concreto, confírmalo con nuestro equipo. No incluyas datos sensibles: al enviar un mensaje consientes su tratamiento por nuestros proveedores (Anthropic y Vercel), con transferencia a EE. UU. <a href="#" id="fc-chat-privacy">Política de privacidad</a></div>' +
       '<form id="fc-chat-form"><textarea id="fc-chat-input" rows="1" placeholder="Escribe tu pregunta…"></textarea><button id="fc-chat-send" type="submit">Enviar</button></form>' +
