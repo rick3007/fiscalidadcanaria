@@ -41,7 +41,7 @@ LANGS = {
                 'slug': 'ric-canary-islands-investment-reserve',
                 'tag': 'Canary Islands Tax Regime',
                 'title': 'RIC Canary Islands Investment Reserve: complete guide 2026',
-                'desc': 'How to reduce corporation tax by up to 90% with the Canary Islands Investment Reserve (RIC). Requirements, valid investments and practical savings example.',
+                'desc': 'How the Canary Islands Investment Reserve (RIC) reduces your tax base by up to 90% of undistributed profits. Requirements, valid investments and practical savings example.',
                 'keywords': 'RIC canary islands investment reserve, reduce corporation tax canaries, RIC canarias 2026',
                 'read_time': '7',
                 'breadcrumb_label': 'RIC Investment Reserve',
@@ -145,7 +145,7 @@ LANGS = {
                 'slug': 'ric-investitionsruecklage-kanarische-inseln',
                 'tag': 'Kanarisches Steuerregime',
                 'title': 'RIC Investitionsrücklage Kanarische Inseln: vollständiger Leitfaden 2026',
-                'desc': 'Wie man die Körperschaftsteuer mit der kanarischen Investitionsrücklage (RIC) um bis zu 90% reduziert. Anforderungen, gültige Investitionen und Praxisbeispiel.',
+                'desc': 'Wie die kanarische Investitionsrücklage (RIC) die Bemessungsgrundlage um bis zu 90% des nicht ausgeschütteten Gewinns mindert. Anforderungen, gültige Investitionen und Praxisbeispiel.',
                 'keywords': 'RIC Kanarische Inseln Investitionsrücklage, Körperschaftsteuer reduzieren Kanarische Inseln, RIC Kanarische Inseln 2026',
                 'read_time': '7',
                 'breadcrumb_label': 'RIC Investitionsrücklage',
@@ -170,7 +170,7 @@ LANGS = {
                 'highlight': 'Die Kanarischen Inseln sind vom EU-MwSt-Gebiet ausgeschlossen. Stattdessen gilt <strong>IGIC mit 7%</strong> anstelle des allgemeinen MwSt-Satzes von 21% — ein Unterschied von 14 Prozentpunkten.',
                 'sections': [
                     ('Was ist der IGIC?', 'Der <strong>Kanarische Allgemeine Indirekte Steuer (IGIC)</strong> ist die indirekte Steuer auf den Verbrauch auf den Kanarischen Inseln, geschaffen durch das Gesetz 20/1991. Wie die MwSt ist sie eine Mehrwertsteuer auf Lieferungen von Waren und Dienstleistungen durch Unternehmer auf den Kanarischen Inseln.'),
-                    ('IGIC-Steuersätze 2026', 'Nullsatz (0%): Grundnahrungsmittel, Bücher, Arzneimittel.<br>Ermäßigter Satz (3%): Neubau, Wasser, Strom.<br><strong>Allgemeiner Satz (7%)</strong>: die meisten Waren und Dienstleistungen.<br>Erhöhter Satz (9,5%): Tabakerzeugnisse.'),
+                    ('IGIC-Steuersätze 2026', 'Nullsatz (0%): Wasser, Brot, Milch, Käse, Eier, unverarbeitetes Obst, Gemüse, Fleisch und Fisch, Arzneimittel, Bücher und Zeitungen, Personen- und Güterbeförderung zwischen den Inseln (nicht touristisch).<br>Ermäßigter Satz (3%): übriger Strom und Gas, Textilien, Schuhe, Möbel, die meisten übrigen Lebensmittel, Landverkehr.<br>Ermäßigter Satz (5%): zuckerhaltige Erfrischungsgetränke.<br><strong>Allgemeiner Satz (7%)</strong>: die meisten Waren und Dienstleistungen.<br>Erhöhter Satz (9,5%): Kraftfahrzeuge bis 11 Steuer-PS.<br>Erhöhter Satz (15%): Kraftfahrzeuge über 11 Steuer-PS, Schmuck, Parfüm, Spirituosen.<br>Sondersatz (20%): Tabakerzeugnisse außer Zigarren und Zigarillos.'),
                     ('Hauptunterschiede zwischen IGIC und MwSt', '<h3>1. Erheblich niedrigere Sätze</h3><p>Der allgemeine IGIC-Satz beträgt <strong>7%</strong> gegenüber <strong>21%</strong> MwSt. Waren und Dienstleistungen auf den Kanarischen Inseln sind für Endverbraucher steuerlich günstiger.</p><h3>2. Kanarische Inseln außerhalb des EU-MwSt-Gebiets</h3><p>Wichtige Konsequenzen für internationale Transaktionen: Lieferungen von/nach Festlandspanien oder der EU werden als Import/Export behandelt.</p><h3>3. Einfuhr unterliegt IGIC, nicht MwSt</h3><p>Wenn ein kanarisches Unternehmen Waren importiert, unterliegt der Vorgang dem IGIC beim Eintritt in das kanarische Gebiet.</p>'),
                     ('Auswirkungen auf Unternehmen', 'Für internationale Investoren bedeutet die Niederlassung auf den Kanarischen Inseln die Arbeit mit IGIC statt MwSt. Der allgemeine Satz von 7% stellt einen Wettbewerbsvorteil bei nicht abzugsfähigen Kosten und Handelsspannen dar.'),
                 ],
@@ -204,7 +204,7 @@ LANGS = {
                 'highlight': 'Wir beraten auf <strong>Spanisch, Englisch, Deutsch, Italienisch und Französisch</strong>. Wenn Sie eine Niederlassung auf den Kanarischen Inseln planen, begleiten wir Sie von Anfang an.',
                 'sections': [
                     ('Warum die Kanarischen Inseln für internationale Unternehmer?', '<ul><li><strong>EU-Territorium</strong>: voller Zugang zum europäischen Binnenmarkt, Doppelbesteuerungsabkommen, Kapitalverkehrsfreiheit</li><li><strong>Sondersteuersystem</strong>: 4% KSt (ZEC), 7% IGIC, eigene Abzüge und Anreize</li><li><strong>Klima und Lebensqualität</strong>: eines der besten Klimate der Welt, moderne Infrastruktur</li><li><strong>Rechtssicherheit</strong>: spanisches Rechtssystem (europäische Rechtssicherheit)</li><li><strong>Zeitzone GMT+0</strong>: ideal für die gleichzeitige Arbeit mit Europa, Amerika und Afrika</li></ul>'),
-                    ('Hauptsteuervorteile des REF', '<h3>1. ZEC — 4% Körperschaftsteuer</h3><p>Mindestinvestition ab 50.000€ auf kleineren Inseln, mindestens 3–5 Arbeitsplätze, effektive Tätigkeit erforderlich.</p><h3>2. IGIC mit 7% statt 21% MwSt</h3><p>Direkter Wettbewerbsvorteil bei Preisen für Endkunden.</p><h3>3. RIC — bis zu 90% Steuerreduzierung</h3><p>Die Investitionsrücklage reduziert die Bemessungsgrundlage um bis zu 90% der reinvestierten Gewinne.</p>'),
+                    ('Hauptsteuervorteile des REF', '<h3>1. ZEC — 4% Körperschaftsteuer</h3><p>Mindestinvestition ab 50.000€ auf kleineren Inseln, mindestens 3–5 Arbeitsplätze, effektive Tätigkeit erforderlich.</p><h3>2. IGIC mit 7% statt 21% MwSt</h3><p>Direkter Wettbewerbsvorteil bei Preisen für Endkunden.</p><h3>3. RIC — Minderung der Bemessungsgrundlage</h3><p>Die Investitionsrücklage reduziert die Bemessungsgrundlage um bis zu 90% der reinvestierten Gewinne.</p>'),
                     ('Wie man sich auf den Kanarischen Inseln niederlässt', '<h3>Schritt 1 — Rechtsform wählen</h3><p>Die häufigste Option für internationale Investoren ist die <strong>Sociedad de Responsabilidad Limitada (S.L.)</strong>: Mindestkapital 1€, beschränkte Haftung.</p><h3>Schritt 2 — NIE und NIF erhalten</h3><p>Ausländische Gesellschafter und Geschäftsführer benötigen eine Ausländeridentifikationsnummer (NIE).</p><h3>Schritt 3 — Gesellschaft gründen</h3><p>Der gesamte Prozess dauert <strong>2–4 Wochen</strong>: Firmenname, Bankkonto, Notarakt, Handelsregistereintragung, Steuerregistrierung.</p><h3>Schritt 4 — ZEC-Status beantragen</h3><p>Falls die Voraussetzungen erfüllt sind, kann die ZEC-Registrierung beantragt werden (ca. 3 Monate).</p>'),
                     ('Digitale Nomaden und das Beckham-Gesetz', 'Spanien verfügt seit 2023 über das <strong>Visum für digitale Nomaden</strong>, das Nicht-EU-Fernarbeitern einen Aufenthalt von bis zu 5 Jahren ermöglicht. Das <strong>Beckham-Gesetz</strong> (Sonderregelung für zuziehende Arbeitnehmer) erlaubt neuen Steuerresidenten, 6 Jahre lang einen pauschalen IRPF-Satz von 24% auf Einkünfte bis 600.000€/Jahr zu zahlen.'),
                 ],
@@ -249,7 +249,7 @@ LANGS = {
                 'slug': 'ric-riserva-investimenti-canarie',
                 'tag': 'Regime Fiscale Canario',
                 'title': 'RIC Riserva per Investimenti nelle Canarie: guida completa 2026',
-                'desc': 'Come ridurre l\'imposta sulle società fino al 90% con la Riserva per Investimenti nelle Canarie (RIC). Requisiti, investimenti validi ed esempio pratico di risparmio.',
+                'desc': 'Come la Riserva per Investimenti nelle Canarie (RIC) riduce la base imponibile fino al 90% degli utili non distribuiti. Requisiti, investimenti validi ed esempio pratico di risparmio.',
                 'keywords': 'RIC riserva investimenti Canarie, ridurre imposta società Canarie, RIC Canarie 2026',
                 'read_time': '7',
                 'breadcrumb_label': 'RIC Riserva Investimenti',
@@ -274,7 +274,7 @@ LANGS = {
                 'highlight': 'Le Isole Canarie sono escluse dal territorio IVA dell\'UE. Si applica invece l\'<strong>IGIC al 7%</strong> anziché l\'aliquota IVA generale del 21% — una differenza di 14 punti percentuali.',
                 'sections': [
                     ('Cos\'è l\'IGIC?', 'L\'<strong>Imposta Generale Indiretta Canaria (IGIC)</strong> è l\'imposta indiretta che grava sul consumo nelle Isole Canarie, creata dalla Legge 20/1991. Come l\'IVA, è un\'imposta sul valore aggiunto sulle forniture di beni e servizi da parte di imprenditori nelle Canarie.'),
-                    ('Aliquote IGIC nel 2026', 'Aliquota zero (0%): prodotti alimentari di base, libri, medicinali.<br>Aliquota ridotta (3%): abitazione nuova, acqua, energia elettrica.<br><strong>Aliquota generale (7%)</strong>: la maggior parte di beni e servizi.<br>Aliquota incrementata (9,5%): tabacco.'),
+                    ('Aliquote IGIC nel 2026', 'Aliquota zero (0%): acqua, pane, latte, formaggi, uova, frutta, verdura, carne e pesce non trasformati, medicinali, libri e giornali, trasporto interinsulare di passeggeri e merci (non turistico).<br>Aliquota ridotta (3%): altra energia elettrica e gas, tessili, calzature, mobili, la maggior parte degli altri alimenti, trasporto terrestre.<br>Aliquota ridotta (5%): bevande analcoliche con zuccheri aggiunti.<br><strong>Aliquota generale (7%)</strong>: la maggior parte di beni e servizi.<br>Aliquota incrementata (9,5%): veicoli fino a 11 CV fiscali.<br>Aliquota incrementata (15%): veicoli oltre 11 CV fiscali, gioielli, profumi, superalcolici.<br>Aliquota speciale (20%): tabacchi lavorati, esclusi sigari e sigaretti.'),
                     ('Principali differenze tra IGIC e IVA', '<h3>1. Aliquote significativamente più basse</h3><p>L\'aliquota generale IGIC è del <strong>7%</strong> rispetto al <strong>21%</strong> dell\'IVA. Beni e servizi nelle Canarie sono fiscalmente più economici.</p><h3>2. Le Canarie fuori dal territorio IVA UE</h3><p>Importanti conseguenze per le operazioni internazionali: le forniture da/verso la Spagna continentale o l\'UE sono trattate come import/export.</p><h3>3. L\'importazione è soggetta a IGIC, non a IVA</h3><p>Quando un\'azienda canaria importa beni, l\'operazione è soggetta a IGIC all\'entrata nel territorio canario.</p>'),
                     ('Implicazioni per le aziende', 'Per gli investitori internazionali, stabilirsi nelle Canarie significa lavorare con l\'IGIC invece dell\'IVA. L\'aliquota generale del 7% rappresenta un vantaggio competitivo nei costi non recuperabili e nei margini commerciali.'),
                 ],
@@ -308,7 +308,7 @@ LANGS = {
                 'highlight': 'Offriamo consulenza in <strong>spagnolo, inglese, tedesco, italiano e francese</strong>. Se stai pensando di stabilirti nelle Canarie, ti guidiamo in tutto il processo dall\'inizio.',
                 'sections': [
                     ('Perché le Canarie per gli imprenditori internazionali?', '<ul><li><strong>Territorio UE</strong>: pieno accesso al mercato unico europeo, convenzioni contro la doppia imposizione</li><li><strong>Regime fiscale speciale</strong>: 4% imposta sulle società (ZEC), IGIC 7%, deduzioni proprie</li><li><strong>Clima e qualità della vita</strong>: uno dei migliori climi al mondo, infrastrutture moderne</li><li><strong>Stabilità giuridica</strong>: sistema legale spagnolo (certezza giuridica europea)</li><li><strong>Fuso orario GMT+0</strong>: ideale per lavorare con Europa, America e Africa</li></ul>'),
-                    ('Principali vantaggi fiscali del REF', '<h3>1. ZEC — 4% imposta sulle società</h3><p>Investimento minimo da 50.000€ nelle isole minori, almeno 3–5 posti di lavoro, attività effettiva richiesta.</p><h3>2. IGIC al 7% invece del 21% IVA</h3><p>Vantaggio competitivo diretto nei prezzi per i clienti finali.</p><h3>3. RIC — riduzione fino al 90% della base imponibile</h3><p>La riserva per investimenti riduce la base imponibile fino al 90% degli utili reinvestiti.</p>'),
+                    ('Principali vantaggi fiscali del REF', '<h3>1. ZEC — 4% imposta sulle società</h3><p>Investimento minimo da 50.000€ nelle isole minori, almeno 3–5 posti di lavoro, attività effettiva richiesta.</p><h3>2. IGIC al 7% invece del 21% IVA</h3><p>Vantaggio competitivo diretto nei prezzi per i clienti finali.</p><h3>3. RIC — riduzione della base imponibile</h3><p>La riserva per investimenti riduce la base imponibile fino al 90% degli utili reinvestiti.</p>'),
                     ('Come stabilirsi nelle Canarie dall\'estero', '<h3>Passo 1 — Scegliere la struttura giuridica</h3><p>L\'opzione più comune per gli investitori internazionali è la <strong>Sociedad de Responsabilidad Limitada (S.L.)</strong>: capitale minimo 1€, responsabilità limitata.</p><h3>Passo 2 — Ottenere NIE e NIF</h3><p>I soci e amministratori stranieri devono ottenere il Numero di Identificazione degli Stranieri (NIE).</p><h3>Passo 3 — Costituire la società</h3><p>Il processo completo richiede <strong>2–4 settimane</strong>: denominazione, conto bancario, atto notarile, iscrizione al Registro delle Imprese, registrazione fiscale.</p><h3>Passo 4 — Richiedere lo status ZEC</h3><p>Se i requisiti sono soddisfatti, si può richiedere l\'iscrizione al Registro ZEC (circa 3 mesi).</p>'),
                     ('Nomadi digitali e Legge Beckham', 'La Spagna dispone dal 2023 del <strong>Visto per nomadi digitali</strong>, che permette ai lavoratori remoti extra-UE di risiedere in Spagna fino a 5 anni. La <strong>Legge Beckham</strong> consente ai nuovi residenti fiscali di pagare un\'aliquota fissa del 24% sull\'IRPF per 6 anni su redditi fino a 600.000€/anno.'),
                 ],
@@ -353,7 +353,7 @@ LANGS = {
                 'slug': 'ric-reserve-investissements-canaries',
                 'tag': 'Régime Fiscal Canarien',
                 'title': 'RIC Réserve pour Investissements aux Canaries : guide complet 2026',
-                'desc': 'Comment réduire l\'impôt sur les sociétés jusqu\'à 90% avec la Réserve pour Investissements aux Canaries (RIC). Conditions, investissements valides et exemple pratique d\'économie.',
+                'desc': 'Comment la Réserve pour Investissements aux Canaries (RIC) réduit la base imposable jusqu\'à 90% des bénéfices non distribués. Conditions, investissements valides et exemple pratique d\'économie.',
                 'keywords': 'RIC réserve investissements Canaries, réduire impôt sociétés Canaries, RIC Canaries 2026',
                 'read_time': '7',
                 'breadcrumb_label': 'RIC Réserve Investissements',
@@ -378,7 +378,7 @@ LANGS = {
                 'highlight': 'Les Îles Canaries sont exclues du territoire TVA de l\'UE. L\'<strong>IGIC à 7%</strong> s\'applique à la place du taux général de TVA de 21% — une différence de 14 points de pourcentage.',
                 'sections': [
                     ('Qu\'est-ce que l\'IGIC ?', 'L\'<strong>Impôt Général Indirect Canarien (IGIC)</strong> est l\'impôt indirect sur la consommation aux Îles Canaries, créé par la Loi 20/1991. Comme la TVA, c\'est un impôt sur la valeur ajoutée prélevé sur les livraisons de biens et prestations de services par des professionnels aux Canaries.'),
-                    ('Taux IGIC en 2026', 'Taux zéro (0%) : produits alimentaires de base, livres, médicaments.<br>Taux réduit (3%) : logement neuf, eau, électricité.<br><strong>Taux général (7%)</strong> : la plupart des biens et services.<br>Taux majoré (9,5%) : tabac.'),
+                    ('Taux IGIC en 2026', 'Taux zéro (0%) : eau, pain, lait, fromages, œufs, fruits, légumes, viandes et poissons non transformés, médicaments, livres et journaux, transport inter-îles de passagers et de marchandises (hors tourisme).<br>Taux réduit (3%) : autre électricité et gaz, textiles, chaussures, meubles, la plupart des autres aliments, transport terrestre.<br>Taux réduit (5%) : boissons rafraîchissantes avec sucres ajoutés.<br><strong>Taux général (7%)</strong> : la plupart des biens et services.<br>Taux majoré (9,5%) : véhicules jusqu’à 11 CV fiscaux.<br>Taux majoré (15%) : véhicules de plus de 11 CV fiscaux, bijoux, parfums, spiritueux.<br>Taux spécial (20%) : tabacs manufacturés, sauf cigares et cigarillos.'),
                     ('Principales différences entre IGIC et TVA', '<h3>1. Taux significativement plus bas</h3><p>Le taux général de l\'IGIC est de <strong>7%</strong> contre <strong>21%</strong> de TVA. Les biens et services aux Canaries sont fiscalement moins chers.</p><h3>2. Canaries hors du territoire TVA de l\'UE</h3><p>Conséquences importantes pour les opérations internationales : les livraisons depuis/vers l\'Espagne continentale ou l\'UE sont traitées comme des importations/exportations.</p><h3>3. L\'importation est soumise à l\'IGIC, pas à la TVA</h3><p>Quand une société canarienne importe des biens, l\'opération est soumise à l\'IGIC à l\'entrée dans le territoire canarien.</p>'),
                     ('Implications pour les entreprises', 'Pour les investisseurs internationaux, s\'établir aux Canaries implique de travailler avec l\'IGIC plutôt que la TVA. Le taux général de 7% représente un avantage concurrentiel dans les coûts non récupérables et les marges commerciales.'),
                 ],
@@ -412,7 +412,7 @@ LANGS = {
                 'highlight': 'Nous conseillons en <strong>espagnol, anglais, allemand, italien et français</strong>. Si vous envisagez de vous établir aux Canaries, nous vous accompagnons dans l\'ensemble du processus.',
                 'sections': [
                     ('Pourquoi les Canaries pour les entrepreneurs internationaux ?', '<ul><li><strong>Territoire UE</strong> : accès complet au marché unique européen, conventions de double imposition</li><li><strong>Régime fiscal spécial</strong> : IS à 4% (ZEC), IGIC à 7%, déductions propres</li><li><strong>Climat et qualité de vie</strong> : l\'un des meilleurs climats au monde, infrastructures modernes</li><li><strong>Stabilité juridique</strong> : système juridique espagnol (sécurité juridique européenne)</li><li><strong>Fuseau horaire GMT+0</strong> : idéal pour travailler avec l\'Europe, l\'Amérique et l\'Afrique</li></ul>'),
-                    ('Principaux avantages fiscaux du REF', '<h3>1. ZEC — IS à 4%</h3><p>Investissement minimum à partir de 50 000€ dans les îles mineures, au moins 3–5 emplois, activité effective requise.</p><h3>2. IGIC à 7% au lieu de TVA à 21%</h3><p>Avantage concurrentiel direct sur les prix pour les clients finaux.</p><h3>3. RIC — réduction jusqu\'à 90% de la base imposable</h3><p>La réserve pour investissements réduit la base imposable jusqu\'à 90% des bénéfices réinvestis.</p>'),
+                    ('Principaux avantages fiscaux du REF', '<h3>1. ZEC — IS à 4%</h3><p>Investissement minimum à partir de 50 000€ dans les îles mineures, au moins 3–5 emplois, activité effective requise.</p><h3>2. IGIC à 7% au lieu de TVA à 21%</h3><p>Avantage concurrentiel direct sur les prix pour les clients finaux.</p><h3>3. RIC — réduction de la base imposable</h3><p>La réserve pour investissements réduit la base imposable jusqu\'à 90% des bénéfices réinvestis.</p>'),
                     ('Comment s\'établir aux Canaries depuis l\'étranger', '<h3>Étape 1 — Choisir la structure juridique</h3><p>L\'option la plus courante pour les investisseurs internationaux est la <strong>Sociedad de Responsabilidad Limitada (S.L.)</strong> : capital minimum de 1€, responsabilité limitée.</p><h3>Étape 2 — Obtenir NIE et NIF</h3><p>Les associés et dirigeants étrangers doivent obtenir un Numéro d\'Identification des Étrangers (NIE).</p><h3>Étape 3 — Constituer la société</h3><p>Le processus complet prend <strong>2–4 semaines</strong> : dénomination sociale, compte bancaire, acte notarié, inscription au Registre du Commerce, enregistrement fiscal.</p><h3>Étape 4 — Demander le statut ZEC</h3><p>Si les conditions sont remplies, l\'inscription au Registre ZEC peut être demandée (environ 3 mois).</p>'),
                     ('Nomades numériques et Loi Beckham', 'L\'Espagne dispose depuis 2023 du <strong>Visa Nomade Numérique</strong>, permettant aux télétravailleurs non communautaires de résider en Espagne jusqu\'à 5 ans. La <strong>Loi Beckham</strong> (Régime spécial des travailleurs impatriés) permet aux nouveaux résidents fiscaux de payer un taux fixe de 24% d\'IRPF pendant 6 ans sur des revenus jusqu\'à 600 000€/an.'),
                 ],
@@ -639,6 +639,9 @@ def make_article(lang, data, article):
 </html>'''
 
 
+# Pages rewritten by hand; regenerating them would restore outdated content
+HAND_MAINTAINED = {'en/blog/igic-vs-vat'}
+
 for lang, data in LANGS.items():
     # Blog index
     blog_dir = f'{lang}/blog'
@@ -650,6 +653,9 @@ for lang, data in LANGS.items():
     # Articles
     for article in data['articles']:
         art_dir = f'{lang}/blog/{article["slug"]}'
+        if art_dir in HAND_MAINTAINED:
+            print(f'  · {art_dir} (hand-maintained, skipped)')
+            continue
         os.makedirs(art_dir, exist_ok=True)
         with open(f'{art_dir}/index.html', 'w', encoding='utf-8') as f:
             f.write(make_article(lang, data, article))
