@@ -1423,6 +1423,7 @@ body.legal-open #fc-chat-btn,body.legal-open #fc-chat-panel{display:none}
     '.fc-msg{max-width:85%;padding:9px 12px;border-radius:12px;font-size:13.5px;line-height:1.45;white-space:pre-wrap}' +
     '.fc-msg.user{align-self:flex-end;background:var(--gold,#c9a84c);color:#04060d;border-bottom-right-radius:4px}' +
     '.fc-msg.bot{align-self:flex-start;background:rgba(255,255,255,.06);color:var(--text,#f0ede8);border-bottom-left-radius:4px}' +
+    '.fc-msg.bot a{color:var(--gold,#c9a84c);text-decoration:underline;word-break:break-all}' +
     '#fc-chat-disclaimer{font-size:10.5px;line-height:1.4;color:var(--muted,#6a7d9a);padding:8px 16px 0;text-align:center}' +
     '#fc-chat-disclaimer a{color:var(--gold,#c9a84c);text-decoration:underline}' +
     '#fc-chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border,rgba(201,168,76,.12))}' +
@@ -1480,6 +1481,34 @@ body.legal-open #fc-chat-btn,body.legal-open #fc-chat-panel{display:none}
     openLegal('modalPrivacidad');
   });
 
+  // Hosts whose URLs become clickable in bot replies; any other URL stays plain text
+  var LINK_HOSTS = ['fiscalidadcanaria.com', 'boe.es', 'agenciatributaria.es', 'agenciatributaria.gob.es', 'hacienda.gob.es', 'gobiernodecanarias.org', 'zec.org', 'seg-social.es'];
+  function isLinkHost(url){
+    try {
+      var h = new URL(url).hostname;
+      return LINK_HOSTS.some(function(d){ return h === d || h.slice(-(d.length + 1)) === '.' + d; });
+    } catch (e) { return false; }
+  }
+  // Builds text nodes and anchors (never innerHTML), so model output cannot inject markup
+  function renderText(el, text){
+    el.textContent = '';
+    var re = /https:\/\/[^\s<>"']+/g, last = 0, m;
+    while ((m = re.exec(text))) {
+      var url = m[0].replace(/[.,;:)\]]+$/, '');
+      el.appendChild(document.createTextNode(text.slice(last, m.index)));
+      if (isLinkHost(url)) {
+        var a = document.createElement('a');
+        a.href = url; a.textContent = url; a.target = '_blank'; a.rel = 'noopener';
+        el.appendChild(a);
+      } else {
+        el.appendChild(document.createTextNode(url));
+      }
+      last = m.index + url.length;
+      re.lastIndex = last;
+    }
+    el.appendChild(document.createTextNode(text.slice(last)));
+  }
+
   function addBubble(role, text){
     var div = document.createElement('div');
     div.className = 'fc-msg ' + (role === 'user' ? 'user' : 'bot');
@@ -1519,7 +1548,7 @@ body.legal-open #fc-chat-btn,body.legal-open #fc-chat-panel{display:none}
             return;
           }
           botText += decoder.decode(r.value, { stream: true });
-          botDiv.textContent = botText;
+          renderText(botDiv, botText);
           msgsEl.scrollTop = msgsEl.scrollHeight;
           return read();
         });
